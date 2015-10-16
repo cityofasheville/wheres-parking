@@ -23,7 +23,7 @@ app.controller('AppCtrl', ['$scope', '$http',
         $scope.geolocationAllowed = false;
     }
     $scope.decks = [];
-    $http({method : 'GET', url : 'available-spaces.json'})
+    $http({method : 'GET', url : 'https://s3.amazonaws.com/asheville-parking-decks/spaces.json'})
           //callbacks
           .success(function(data, status, headers, config){
             $scope.decks = data.decks;
