@@ -7,20 +7,6 @@ app.config(function () {});//END config
 app.controller('AppCtrl', ['$scope', '$http',
  function ($scope, $http) {
 
-    //Geolocation
-    $scope.geolocationAllowed = true;
-    $scope.usersPosition = "";
-
-    var geolocationCallback = function(position){
-        $scope.usersPosition = position.coords.latitude + "," + position.coords.longitude;
-        $scope.$apply();
-    }
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(geolocationCallback);
-    } else {
-        $scope.geolocationAllowed = false;
-    }
-
     //Parking deck spaces data
     $scope.decks = [];
 
