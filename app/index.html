@@ -38,7 +38,7 @@
                 <i class="fa fa-map-signs"></i>
             </h4>
             <div class="col-xs-12">
-                <a ng-href="http://maps.google.com/?saddr={{usersPosition}}&daddr={{deck.coords[0]}},{{deck.coords[1]}}" target = "_blank" class = "row list-group-item" ng-repeat = "deck in decks" style = "margin-top : 5px" >
+                <a ng-href="http://maps.google.com/?saddr=Current+Location&daddr={{deck.coords[0]}},{{deck.coords[1]}}" target = "_blank" class = "row list-group-item" ng-repeat = "deck in decks" style = "margin-top : 5px" >
                     <h3 class = text-info>{{deck.name}} 
                         <span class="pull-right"><strong>{{deck.available}}</strong> </span>
                     </h3>
