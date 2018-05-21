@@ -13,7 +13,7 @@ h1 {
   -webkit-margin-end: 0px;
 }
 
-h1, h2, body { 
+h1, h2, body {
   font-family: Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
@@ -207,6 +207,15 @@ footer a:hover {
 .GarageCard-bc-icon {
   width: 28px;
   margin-right: 5px;
+}
+
+.hidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 @media (max-width: 365px) {
