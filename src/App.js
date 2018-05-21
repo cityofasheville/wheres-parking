@@ -21,14 +21,14 @@ class App extends Component {
         <section className="App-content">
           <header>
             <h2 className="App-instructions">Click on a parking deck below for Google map directions
-            <img src={direction_icon} className="App-direction_icon" alt="icon" />
+            <img src={direction_icon} className="App-direction_icon" alt="direction sign icon" />
             </h2>
           </header>
           <GarageContainer />
         </section>
         <footer className="App-footer">
           <div>
-            <img src={city_logo} alt="City of Asheville" className="App-logo" /><div className="App-cooperation">in cooperation with</div><div className="App-cooperation-small">with</div><img src={bc_logo} alt="Buncombe County" className="App-bc-logo" />
+            <img src={city_logo} alt="City of Asheville logo" className="App-logo" /><div className="App-cooperation">in cooperation with</div><div className="App-cooperation-small">with</div><img src={bc_logo} alt="Buncombe County logo" className="App-bc-logo" />
           </div>
           <div className="App-open-source">It's open source! Fork it on <a href="https://github.com/cityofasheville/wheres-parking" target="_blank" rel="noopener noreferrer">GitHub <img src={git_hub} alt="" /> </a></div>
         </footer>
