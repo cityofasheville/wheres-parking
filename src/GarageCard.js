@@ -1,12 +1,12 @@
-import React from "react";
-import bc_logo_brand from "./bc_logo_brand.png";
-import city_logo_no_text from "./city_logo_no_text.svg";
+import React from 'react';
+import bc_logo_brand from './bc_logo_brand.png';
+import city_logo_no_text from './city_logo_no_text.svg';
 
 const city_owned = [
-  "Biltmore Ave",
-  "Civic Center",
-  "Rankin Ave",
-  "Wall Street"
+  'Biltmore Ave',
+  'Civic Center',
+  'Rankin Ave',
+  'Wall Street',
 ];
 
 const GarageCard = props => (
@@ -30,13 +30,13 @@ const GarageCard = props => (
             }
             alt={
               city_owned.indexOf(props.name) > -1
-                ? "City of Asheville icon"
-                : "Buncombe County icon"
+                ? 'City of Asheville icon'
+                : 'Buncombe County icon'
             }
             className={
               city_owned.indexOf(props.name) > -1
-                ? "GarageCard-city-icon"
-                : "GarageCard-bc-icon"
+                ? 'GarageCard-city-icon'
+                : 'GarageCard-bc-icon'
             }
           />
           <span className="GarageCard-name-text">{props.name}</span>

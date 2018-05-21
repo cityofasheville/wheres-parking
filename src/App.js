@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import city_logo_no_text from "./city_logo_no_text.svg";
-import city_logo from "./city_logo.svg";
-import bc_logo from "./bc_logo.png";
-import direction_icon from "./direction_icon.svg";
-import git_hub from "./git_hub.svg";
-import "./App.css";
-import GarageContainer from "./GarageContainer";
+import React, { Component } from 'react';
+import city_logo_no_text from './city_logo_no_text.svg';
+import city_logo from './city_logo.svg';
+import bc_logo from './bc_logo.png';
+import direction_icon from './direction_icon.svg';
+import git_hub from './git_hub.svg';
+import './App.css';
+import GarageContainer from './GarageContainer';
 
 class App extends Component {
   render() {
@@ -41,13 +41,13 @@ class App extends Component {
             <img src={bc_logo} alt="Buncombe County" className="App-bc-logo" />
           </div>
           <div className="App-open-source">
-            It's open source! Fork it on{" "}
+            It's open source! Fork it on{' '}
             <a
               href="https://github.com/cityofasheville/wheres-parking"
               target="_blank"
               rel="noopener noreferrer"
             >
-              GitHub <img src={git_hub} alt="" />{" "}
+              GitHub <img src={git_hub} alt="" />{' '}
             </a>
           </div>
         </footer>

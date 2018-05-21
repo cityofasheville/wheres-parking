@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import GarageCard from "./GarageCard";
+import React, { Component } from 'react';
+import GarageCard from './GarageCard';
 
 class GarageContainer extends Component {
   constructor(props, context) {
@@ -7,31 +7,31 @@ class GarageContainer extends Component {
 
     this.state = {
       city_garages: {
-        decks: []
+        decks: [],
       },
       county_garages: {
         decks: [
           {
-            name: "College Street"
-          }
-        ]
-      }
+            name: 'College Street',
+          },
+        ],
+      },
     };
   }
 
   getCityCounts() {
-    fetch("https://s3.amazonaws.com/asheville-parking-decks/spaces.json")
+    fetch('https://s3.amazonaws.com/asheville-parking-decks/spaces.json')
       .then(response => response.json())
       .then(responseJSON => {
         this.setState({
-          city_garages: responseJSON
+          city_garages: responseJSON,
         });
       })
       .catch(error => console.log(error));
   }
 
   getCountyCounts() {
-    fetch("https://s3.amazonaws.com/bc-parking-decks/164College")
+    fetch('https://s3.amazonaws.com/bc-parking-decks/164College')
       .then(college => college.json())
       .then(collegeJSON => {
         // fetch('https://s3.amazonaws.com/bc-parking-decks/164College')
@@ -41,23 +41,23 @@ class GarageContainer extends Component {
           county_garages: {
             decks: [
               {
-                name: "College Street",
+                name: 'College Street',
                 available:
                   collegeJSON.decks && collegeJSON.decks.length > 0
                     ? collegeJSON.decks[0].available
-                    : "Unable to determine",
+                    : 'Unable to determine',
                 coords:
                   collegeJSON.decks && collegeJSON.decks.length > 0
                     ? collegeJSON.decks[0].coords
-                    : [35.591976, -82.545413]
-              }
+                    : [35.591976, -82.545413],
+              },
               // {
               //     name: 'Coxe',
               //     available: coxeJSON.decks && coxeJSON.decks.length > 0 ? coxeJSON.decks[0].available : 'Unable to determine',
               //     coords: coxeJSON.decks && coxeJSON.decks.length > 0 ? coxeJSON.decks[0].coords : [0, 0],
               // }
-            ]
-          }
+            ],
+          },
         });
         //})
         //.catch(error => console.log(error));
