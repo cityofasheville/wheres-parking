@@ -1,10 +1,10 @@
 {
   "main.css": "static/css/main.a6c27353.css",
   "main.css.map": "static/css/main.a6c27353.css.map",
-  "main.js": "static/js/main.099661ea.js",
-  "main.js.map": "static/js/main.099661ea.js.map",
-  "static\\media\\city_logo.svg": "static/media/city_logo.b3aa6a63.svg",
-  "static\\media\\city_logo_no_text.svg": "static/media/city_logo_no_text.b75092d7.svg",
-  "static\\media\\direction_icon.svg": "static/media/direction_icon.93c7a940.svg",
+  "main.js": "static/js/main.aa81ad44.js",
+  "main.js.map": "static/js/main.aa81ad44.js.map",
+  "static\\media\\city_logo.svg": "static/media/city_logo.f75552e5.svg",
+  "static\\media\\city_logo_no_text.svg": "static/media/city_logo_no_text.d159fa53.svg",
+  "static\\media\\direction_icon.svg": "static/media/direction_icon.f8b7c0ba.svg",
   "static\\media\\git_hub.svg": "static/media/git_hub.7c1878c2.svg"
 }
