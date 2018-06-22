@@ -43,7 +43,7 @@ class GarageContainer extends Component {
                             coords: collegeJSON.decks && collegeJSON.decks.length > 0 ? collegeJSON.decks[0].coords : [35.591976,-82.545413],
                         },
                         {
-                            name: 'Coxe',
+                            name: 'Coxe Ave',
                             available: coxeJSON.decks && coxeJSON.decks.length > 0 ? coxeJSON.decks[0].available : 'Unable to determine',
                             coords: coxeJSON.decks && coxeJSON.decks.length > 0 ? coxeJSON.decks[0].coords : [0, 0],
                         }
