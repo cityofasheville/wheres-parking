@@ -32,9 +32,9 @@ class GarageContainer extends Component {
         fetch('https://s3.amazonaws.com/bc-parking-decks/164College')
         .then((college) => college.json())
         .then((collegeJSON) => {
-            // fetch('https://s3.amazonaws.com/bc-parking-decks/164College')
-            // .then((coxe) => coxe.json())
-            // .then((coxeJSON) => {
+            fetch('https://s3.amazonaws.com/bc-parking-decks/40Coxe')
+            .then((coxe) => coxe.json())
+            .then((coxeJSON) => {
                 this.setState({
                     county_garages: {
                         decks: [{
@@ -42,16 +42,16 @@ class GarageContainer extends Component {
                             available: collegeJSON.decks && collegeJSON.decks.length > 0 ? collegeJSON.decks[0].available : 'Unable to determine',
                             coords: collegeJSON.decks && collegeJSON.decks.length > 0 ? collegeJSON.decks[0].coords : [35.591976,-82.545413],
                         },
-                        // {
-                        //     name: 'Coxe',
-                        //     available: coxeJSON.decks && coxeJSON.decks.length > 0 ? coxeJSON.decks[0].available : 'Unable to determine',
-                        //     coords: coxeJSON.decks && coxeJSON.decks.length > 0 ? coxeJSON.decks[0].coords : [0, 0],
-                        // }
+                        {
+                            name: 'Coxe',
+                            available: coxeJSON.decks && coxeJSON.decks.length > 0 ? coxeJSON.decks[0].available : 'Unable to determine',
+                            coords: coxeJSON.decks && coxeJSON.decks.length > 0 ? coxeJSON.decks[0].coords : [0, 0],
+                        }
                         ]
                     },
                 });
-            //})
-            //.catch(error => console.log(error));
+            })
+            .catch(error => console.log(error));
         })
         .catch(error => console.log(error));
     }
