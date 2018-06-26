@@ -13,3 +13,5 @@ You can grab the feeds from these AWS S3 buckets:
 [https://s3.amazonaws.com/asheville-parking-decks/spaces.json](https://s3.amazonaws.com/asheville-parking-decks/spaces.json)
 
 [https://s3.amazonaws.com/bc-parking-decks/164College](https://s3.amazonaws.com/bc-parking-decks/164College)
+
+[https://s3.amazonaws.com/bc-parking-decks/40Coxe](https://s3.amazonaws.com/bc-parking-decks/40Coxe)
