@@ -67,6 +67,7 @@ class GarageContainer extends Component {
         this.getCountyCounts();
         this.interval = setInterval(() => {
             this.getCityCounts();
+            this.getCountyCounts();
         }, 10000);
     }
 
