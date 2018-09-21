@@ -21,7 +21,11 @@ const GarageCard = props => (
             className={city_owned.indexOf(props.name) > -1 ? 'GarageCard-city-icon' : 'GarageCard-bc-icon'}
           />
           <span className="GarageCard-name-text">
-            {props.name.replace(' Ave', ' Avenue')}
+            { 
+              props.name.length > 3 && props.name.substring(props.name.length - 3) === 'Ave' ?props.name.replace(' Ave', ' Avenue')
+              :
+              props.name
+            }
             <span className="hidden">garage</span>
           </span>
         </span>

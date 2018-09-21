@@ -10,9 +10,7 @@ class GarageContainer extends Component {
                 decks: [],
             },
             county_garages: {
-                decks: [{
-                    name: 'College Street',
-                }],
+                decks: [],
             }
         };
     };
@@ -38,12 +36,12 @@ class GarageContainer extends Component {
                 this.setState({
                     county_garages: {
                         decks: [{
-                            name: 'College Street',
+                            name: collegeJSON.decks && collegeJSON.decks.length > 0 ? collegeJSON.decks[0].name : '164 College Street',
                             available: collegeJSON.decks && collegeJSON.decks.length > 0 ? collegeJSON.decks[0].available : 'Unable to determine',
                             coords: collegeJSON.decks && collegeJSON.decks.length > 0 ? collegeJSON.decks[0].coords : [35.591976,-82.545413],
                         },
                         {
-                            name: 'Coxe Ave',
+                            name: coxeJSON.decks && coxeJSON.decks.length > 0 ? coxeJSON.decks[0].name : '40 Coxe Avenue',
                             available: coxeJSON.decks && coxeJSON.decks.length > 0 ? coxeJSON.decks[0].available : 'Unable to determine',
                             coords: coxeJSON.decks && coxeJSON.decks.length > 0 ? coxeJSON.decks[0].coords : [0, 0],
                         }
