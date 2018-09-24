@@ -81,7 +81,7 @@ class GarageContainer extends Component {
                     <span>Open spaces</span>
                 </div>
                 <div>
-                    {this.sortGarages(this.state.city_garages.decks, this.state.county_garages.decks).map(deck => <GarageCard name={deck.name} available={deck.available} coords={deck.coords} />)}
+                    {this.sortGarages(this.state.city_garages.decks, this.state.county_garages.decks).map(deck => <GarageCard name={deck.name} key={deck.name} available={deck.available} coords={deck.coords} />)}
                 </div>
             </div>
         );

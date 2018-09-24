@@ -101,6 +101,7 @@ footer a:hover {
 .App-content {
   margin-left: 10px;
   text-align: left;
+  background: white;
 }
 
 .App-footer {
@@ -109,6 +110,7 @@ footer a:hover {
   bottom: 0;
   width: 100%;
   background-color: #f6fcff;
+  z-index: -1000;
 }
 
 .App-cooperation, .App-cooperation-small {
