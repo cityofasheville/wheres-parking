@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactGA from 'react-ga';
 import city_logo_no_text from './city_logo_no_text.svg';
 import city_logo from './city_logo.svg';
 import bc_logo from './bc_logo.png';
@@ -6,6 +7,12 @@ import direction_icon from './direction_icon.svg';
 import git_hub from './git_hub.svg';
 import './App.css';
 import GarageContainer from './GarageContainer';
+
+if (window.location.href.indexOf('cityofasheville.github.io') > -1) {
+  ReactGA.initialize('UA-137810331-1');
+  ReactGA.set({ page: window.location.pathname });
+  ReactGA.pageview(window.location.pathname);
+}
 
 class App extends Component {
   render() {
