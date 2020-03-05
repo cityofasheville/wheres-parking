@@ -1,17 +1,26 @@
 {
-  "main.css": "/wheres-parking/static/css/main.247efc6b.chunk.css",
-  "main.js": "/wheres-parking/static/js/main.2a38a228.chunk.js",
-  "main.js.map": "/wheres-parking/static/js/main.2a38a228.chunk.js.map",
-  "runtime~main.js": "/wheres-parking/static/js/runtime~main.69d8db84.js",
-  "runtime~main.js.map": "/wheres-parking/static/js/runtime~main.69d8db84.js.map",
-  "static/js/2.508582b8.chunk.js": "/wheres-parking/static/js/2.508582b8.chunk.js",
-  "static/js/2.508582b8.chunk.js.map": "/wheres-parking/static/js/2.508582b8.chunk.js.map",
-  "index.html": "/wheres-parking/index.html",
-  "precache-manifest.cc638f32297bd86607371a89666faf8e.js": "/wheres-parking/precache-manifest.cc638f32297bd86607371a89666faf8e.js",
-  "service-worker.js": "/wheres-parking/service-worker.js",
-  "static/css/main.247efc6b.chunk.css.map": "/wheres-parking/static/css/main.247efc6b.chunk.css.map",
-  "static/media/city_logo.svg": "/wheres-parking/static/media/city_logo.f75552e5.svg",
-  "static/media/city_logo_no_text.svg": "/wheres-parking/static/media/city_logo_no_text.d159fa53.svg",
-  "static/media/direction_icon.svg": "/wheres-parking/static/media/direction_icon.f8b7c0ba.svg",
-  "static/media/git_hub.svg": "/wheres-parking/static/media/git_hub.7c1878c2.svg"
+  "files": {
+    "main.css": "/wheres-parking/static/css/main.054fc62d.chunk.css",
+    "main.js": "/wheres-parking/static/js/main.9d82ecf1.chunk.js",
+    "main.js.map": "/wheres-parking/static/js/main.9d82ecf1.chunk.js.map",
+    "runtime-main.js": "/wheres-parking/static/js/runtime-main.c252ba72.js",
+    "runtime-main.js.map": "/wheres-parking/static/js/runtime-main.c252ba72.js.map",
+    "static/js/2.740fe89a.chunk.js": "/wheres-parking/static/js/2.740fe89a.chunk.js",
+    "static/js/2.740fe89a.chunk.js.map": "/wheres-parking/static/js/2.740fe89a.chunk.js.map",
+    "index.html": "/wheres-parking/index.html",
+    "precache-manifest.71430ef193ee4fe51091722cc50c2b9d.js": "/wheres-parking/precache-manifest.71430ef193ee4fe51091722cc50c2b9d.js",
+    "service-worker.js": "/wheres-parking/service-worker.js",
+    "static/css/main.054fc62d.chunk.css.map": "/wheres-parking/static/css/main.054fc62d.chunk.css.map",
+    "static/js/2.740fe89a.chunk.js.LICENSE.txt": "/wheres-parking/static/js/2.740fe89a.chunk.js.LICENSE.txt",
+    "static/media/city_logo.svg": "/wheres-parking/static/media/city_logo.b3aa6a63.svg",
+    "static/media/city_logo_no_text.svg": "/wheres-parking/static/media/city_logo_no_text.b75092d7.svg",
+    "static/media/direction_icon.svg": "/wheres-parking/static/media/direction_icon.93c7a940.svg",
+    "static/media/git_hub.svg": "/wheres-parking/static/media/git_hub.7c1878c2.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c252ba72.js",
+    "static/js/2.740fe89a.chunk.js",
+    "static/css/main.054fc62d.chunk.css",
+    "static/js/main.9d82ecf1.chunk.js"
+  ]
 }
