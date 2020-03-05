@@ -2,7 +2,7 @@ import React from 'react';
 import bc_logo_brand from './bc_logo_brand.png';
 import city_logo_no_text from './city_logo_no_text.svg';
 
-const city_owned = ['Biltmore Ave', 'Civic Center', 'Rankin Ave', 'Wall Street'];
+const city_owned = ['Biltmore Ave', "Harrah's Cherokee", 'Rankin Ave', 'Wall Street'];
 
 const GarageCard = props => (
   <div>
