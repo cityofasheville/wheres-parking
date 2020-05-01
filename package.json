@@ -8,7 +8,8 @@
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-ga": "^2.5.7",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "snyk": "^1.316.1"
   },
   "scripts": {
     "predeply": "npm run build",
@@ -16,12 +17,15 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "snyk": true
 }
