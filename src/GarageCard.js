@@ -12,7 +12,7 @@ const GarageCard = props => (
       <a
         className="GarageCard-card"
         href={`https://maps.google.com/?saddr=Current+Location&daddr=${props.coords[0]},${props.coords[1]}`}
-        target="_blank"
+        target="_blank" rel="noopener noreferrer"
       >
         <span className="GarageCard-name">
           <img

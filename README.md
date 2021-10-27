@@ -4,9 +4,9 @@ Where’s Parking is a GitHub pages hosted React app. The app makes a GET reques
 
 Backend Code: https://github.com/cityofasheville/parking-data-parser 
 
-Where's Parking site: http://cityofasheville.github.io/wheres-parking/
+Where's Parking site: http://cityofasheville.github.io/wheres-parking/ (it's served from the gh-pages branch of this repo)
 
-It’s embedded in the City’s website here: http://www.ashevillenc.gov/Departments/ParkingServices/FindParking.aspx
+It is (NOT?) embedded in the City’s website here: http://www.ashevillenc.gov/Departments/ParkingServices/FindParking.aspx
 
 You can grab the feeds from these AWS S3 buckets:
 

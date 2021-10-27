@@ -30,6 +30,8 @@ class App extends Component {
             <h2 className="App-instructions">Click on a parking deck below for Google map directions
             <img src={direction_icon} className="App-direction_icon" alt="direction sign icon" />
             </h2>
+            <h2 className="App-instructions" style={{"color":"red"}}>Sorry, Asheville deck information is temporarily unavailable. College and Coxe should be correct.
+            </h2>            
           </header>
           <GarageContainer />
         </section>
