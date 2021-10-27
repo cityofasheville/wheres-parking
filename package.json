@@ -5,10 +5,10 @@
   "homepage": "http://cityofasheville.github.io/wheres-parking",
   "dependencies": {
     "gh-pages": "^2.0.1",
-    "react": "^16.3.2",
+    "react": "^17.0.2",
     "react-dom": "^16.14.0",
     "react-ga": "^2.5.7",
-    "react-scripts": "2.1.8"
+    "react-scripts": "^4.0.3"
   },
   "scripts": {
     "predeply": "npm run build",
