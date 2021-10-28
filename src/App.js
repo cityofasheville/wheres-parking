@@ -27,11 +27,16 @@ class App extends Component {
         </header>
         <section className="App-content">
           <header>
+            <div style={{"border":"1px solid black"}}>
+              <h2 className="App-instructions" style={{"color":"red"}}>Sorry, Asheville deck information is temporarily unavailable. Buncombe decks, (College and Coxe,) should be correct.
+                <p>
+                  <a href="https://www.ashevillenc.gov/news/city-of-asheville-to-resume-charging-at-its-parking-garages-with-installation-of-new-equipment/">For more information, click here.</a>
+                </p>
+              </h2>
+            </div>
             <h2 className="App-instructions">Click on a parking deck below for Google map directions
-            <img src={direction_icon} className="App-direction_icon" alt="direction sign icon" />
+              <img src={direction_icon} className="App-direction_icon" alt="direction sign icon" />
             </h2>
-            <h2 className="App-instructions" style={{"color":"red"}}>Sorry, Asheville deck information is temporarily unavailable. College and Coxe should be correct.
-            </h2>            
           </header>
           <GarageContainer />
         </section>
