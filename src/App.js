@@ -28,7 +28,7 @@ class App extends Component {
         <section className="App-content">
           <header>
             <div style={{"border":"1px solid black"}}>
-              <h2 className="App-instructions" style={{"color":"red"}}>After launching new garage equipment several months ago, Parking Services and Information Technology staff determined that the existing parking availability system for the City’s parking garages would need to be replaced in order to work seamlessly with the new garage equipment. This need was not immediately apparent leading up to the launch of the new equipment. The City is currently in negotiations with a vendor to provide a new parking availability system, and will provide additional information as soon as an installation and launch date is scheduled. 
+              <h2 className="App-instructions" style={{"color":"red"}}>Sorry, Asheville deck information is temporarily unavailable. Buncombe decks, (College and Coxe,) should be correct.
                 <p>
                   <a href="https://www.ashevillenc.gov/news/city-of-asheville-to-resume-charging-at-its-parking-garages-with-installation-of-new-equipment/">For more information, click here.</a>
                 </p>
@@ -40,6 +40,8 @@ class App extends Component {
           </header>
           <GarageContainer />
         </section>
+
+
         <footer className="App-footer">
           <div>
             <img src={city_logo} alt="City of Asheville logo" className="App-logo" /><div className="App-cooperation">in cooperation with</div><div className="App-cooperation-small">with</div><img src={bc_logo} alt="Buncombe County logo" className="App-bc-logo" />
