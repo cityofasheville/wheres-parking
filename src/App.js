@@ -41,6 +41,8 @@ class App extends Component {
           </header>
           <GarageContainer />
         </section>
+
+
         <footer className="App-footer">
           <div>
             <img src={city_logo} alt="City of Asheville logo" className="App-logo" /><div className="App-cooperation">in cooperation with</div><div className="App-cooperation-small">with</div><img src={bc_logo} alt="Buncombe County logo" className="App-bc-logo" />

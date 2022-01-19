@@ -15,3 +15,7 @@ You can grab the feeds from these AWS S3 buckets:
 [https://s3.amazonaws.com/bc-parking-decks/164College](https://s3.amazonaws.com/bc-parking-decks/164College)
 
 [https://s3.amazonaws.com/bc-parking-decks/40Coxe](https://s3.amazonaws.com/bc-parking-decks/40Coxe)
+
+
+Temp status:
+While waiting for new City data feed, function getCityCounts is commented out and textbox added to app.js
