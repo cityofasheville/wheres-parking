@@ -31,7 +31,7 @@ class App extends Component {
               <h2 className="App-instructions"><p style={{"color":"red"}}>Sorry, Asheville deck information is temporarily unavailable. Buncombe decks, (College and Coxe,) should be correct.
                 </p>
                 <p>
-                After launching new garage equipment several months ago, Parking Services and Information Technology staff determined that the existing parking availability system for the City’s parking garages would need to be replaced in order to work seamlessly with the new garage equipment. This need was not immediately apparent leading up to the launch of the new equipment. The City is currently in negotiations with a vendor to provide a new parking availability system, and will provide additional information as soon as an installation and launch date is scheduled. 
+                Parking Services staff members are working with several vendors to finalize new parking availability signs, which have recently been installed. We expect that the new signs will be fully operational by early March 2023. 
                 </p>
               </h2>
             </div>
