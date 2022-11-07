@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/wheres-parking/static/css/main.1e1332a1.chunk.css",
-    "main.js": "/wheres-parking/static/js/main.7d77c55d.chunk.js",
-    "main.js.map": "/wheres-parking/static/js/main.7d77c55d.chunk.js.map",
+    "main.js": "/wheres-parking/static/js/main.f964f8d2.chunk.js",
+    "main.js.map": "/wheres-parking/static/js/main.f964f8d2.chunk.js.map",
     "runtime-main.js": "/wheres-parking/static/js/runtime-main.e6afff9a.js",
     "runtime-main.js.map": "/wheres-parking/static/js/runtime-main.e6afff9a.js.map",
     "static/js/2.4bbf13a7.chunk.js": "/wheres-parking/static/js/2.4bbf13a7.chunk.js",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.e6afff9a.js",
     "static/js/2.4bbf13a7.chunk.js",
     "static/css/main.1e1332a1.chunk.css",
-    "static/js/main.7d77c55d.chunk.js"
+    "static/js/main.f964f8d2.chunk.js"
   ]
 }
