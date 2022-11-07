@@ -28,7 +28,7 @@ class App extends Component {
         <section className="App-content">
           <header>
             <div style={{"border":"1px solid black", "padding":"10px"}}>
-              <h2 className="App-instructions"><p style={{"color":"red"}}>Sorry, Asheville deck information is temporarily unavailable. Buncombe decks, (College and Coxe,) should be correct.
+              <h2 className="App-instructions"><p style={{"color":"red"}}>Sorry, Asheville deck information is temporarily unavailable. The Buncombe County decks, (College and Coxe,) should be correct.
                 </p>
                 <p>
                 Parking Services staff members are working with several vendors to finalize new parking availability signs, which have recently been installed. We expect that the new signs will be fully operational by early March 2023. 
