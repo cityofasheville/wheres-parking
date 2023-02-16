@@ -2,7 +2,7 @@ import React from 'react';
 import bc_logo_brand from './bc_logo_brand.png';
 import city_logo_no_text from './city_logo_no_text.svg';
 
-const city_owned = ['Biltmore Ave', "Harrah's Cherokee", 'Rankin Ave', 'Wall Street'];
+const city_owned = ['Biltmore Ave.Garage', "Harrah's Cherokee Center Garage", 'Rankin Ave Garage', 'Wall Street Garage'];
 
 const GarageCard = props => (
   <div>
@@ -22,7 +22,7 @@ const GarageCard = props => (
           />
           <span className="GarageCard-name-text">
             { 
-              props.name.length > 3 && props.name.substring(props.name.length - 3) === 'Ave' ?props.name.replace(' Ave', ' Avenue')
+              props.name.length > 3 && props.name.substring(props.name.length - 6) === 'Garage' ? props.name.substring(0, props.name.length - 7)
               :
               props.name
             }
