@@ -16,14 +16,14 @@ class GarageContainer extends Component {
     };
 
     getCityCounts() {
-        // fetch('https://s3.amazonaws.com/asheville-parking-decks/spaces.json')
-        // .then((response) => response.json())
-        // .then((responseJSON) => {
-        //     this.setState({
-        //         city_garages: responseJSON,
-        //     });
-        // })
-        // .catch(error => console.log(error));
+        fetch('https://s3.amazonaws.com/avl-parking-decks/spaces.json')
+        .then((response) => response.json())
+        .then((responseJSON) => {
+            this.setState({
+                city_garages: responseJSON,
+            });
+        })
+        .catch(error => console.log(error));
     }
 
     getCountyCounts() {
