@@ -1,91 +1,69 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import GarageCard from './GarageCard';
 
-class GarageContainer extends Component {
-    constructor(props, context) {
-        super(props, context);
+const fetchGarageData = async (url) => {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(`Failed to fetch data from ${url}:`, error);
+        return null;
+    }
+};
 
-        this.state = {
-            city_garages: {
-                decks: [],
-            },
-            county_garages: {
-                decks: [],
-            }
-        };
+const GarageContainer = () => {
+    const [cityGarages, setCityGarages] = useState([]);
+    const [countyGarages, setCountyGarages] = useState([]);
+
+    const updateGarageData = async () => {
+        const cityData = await fetchGarageData('https://s3.amazonaws.com/avl-parking-decks/spaces.json');
+        const collegeData = await fetchGarageData('https://s3.amazonaws.com/bc-parking-decks/164College');
+        const coxeData = await fetchGarageData('https://s3.amazonaws.com/bc-parking-decks/40Coxe');
+
+        if (cityData) setCityGarages(cityData.decks || []);
+        if (collegeData && coxeData) {
+            setCountyGarages([
+                {
+                    name: collegeData.decks?.[0]?.name || '164 College Street',
+                    available: collegeData.decks?.[0]?.available || 'Unable to determine',
+                    coords: collegeData.decks?.[0]?.coords || [35.591976, -82.545413],
+                },
+                {
+                    name: coxeData.decks?.[0]?.name || '40 Coxe Avenue',
+                    available: coxeData.decks?.[0]?.available || 'Unable to determine',
+                    coords: coxeData.decks?.[0]?.coords || [0, 0],
+                }
+            ]);
+        }
     };
 
-    getCityCounts() {
-        fetch('https://s3.amazonaws.com/avl-parking-decks/spaces.json')
-        .then((response) => response.json())
-        .then((responseJSON) => {
-            this.setState({
-                city_garages: responseJSON,
-            });
-        })
-        .catch(error => console.log(error));
-    }
+    useEffect(() => {
+        updateGarageData();
+        const interval = setInterval(updateGarageData, 10000);
+        return () => clearInterval(interval);
+    }, []);
 
-    getCountyCounts() {
-        fetch('https://s3.amazonaws.com/bc-parking-decks/164College')
-        .then((college) => college.json())
-        .then((collegeJSON) => {
-            fetch('https://s3.amazonaws.com/bc-parking-decks/40Coxe')
-            .then((coxe) => coxe.json())
-            .then((coxeJSON) => {
-                this.setState({
-                    county_garages: {
-                        decks: [{
-                            name: collegeJSON.decks && collegeJSON.decks.length > 0 ? collegeJSON.decks[0].name : '164 College Street',
-                            available: collegeJSON.decks && collegeJSON.decks.length > 0 ? collegeJSON.decks[0].available : 'Unable to determine',
-                            coords: collegeJSON.decks && collegeJSON.decks.length > 0 ? collegeJSON.decks[0].coords : [35.591976,-82.545413],
-                        },
-                        {
-                            name: coxeJSON.decks && coxeJSON.decks.length > 0 ? coxeJSON.decks[0].name : '40 Coxe Avenue',
-                            available: coxeJSON.decks && coxeJSON.decks.length > 0 ? coxeJSON.decks[0].available : 'Unable to determine',
-                            coords: coxeJSON.decks && coxeJSON.decks.length > 0 ? coxeJSON.decks[0].coords : [0, 0],
-                        }
-                        ]
-                    },
-                });
-            })
-            .catch(error => console.log(error));
-        })
-        .catch(error => console.log(error));
-    }
+    const sortedGarages = [...cityGarages, ...countyGarages].sort((a, b) => a.name.localeCompare(b.name));
 
-    sortGarages(city, county) {
-        const combined = city.concat(county);
-        combined.sort(function(a,b) {return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);} );
-        return combined;
-    }
-
-    componentDidMount() {
-        this.getCityCounts();
-        this.getCountyCounts();
-        this.interval = setInterval(() => {
-            this.getCityCounts();
-            this.getCountyCounts();
-        }, 10000);
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.interval);
-    }
-
-    render() {
-        return (
-            <div>
-                <div className="GarageContainer-data-labels">
-                    <span>Garage name</span>
-                    <span>Open spaces</span>
-                </div>
-                <div>
-                    {this.sortGarages(this.state.city_garages.decks, this.state.county_garages.decks).map(deck => <GarageCard name={deck.name} key={deck.name} available={deck.available} coords={deck.coords} />)}
-                </div>
+    return (
+        <div>
+            <div className="GarageContainer-data-labels">
+                <span>Garage name</span>
+                <span>Open spaces</span>
             </div>
-        );
-    }
+            <div>
+                {sortedGarages.map(deck => (
+                    <GarageCard
+                        name={deck.name}
+                        key={deck.name}
+                        available={deck.available}
+                        coords={deck.coords}
+                    />
+                ))}
+            </div>
+        </div>
+    );
 };
 
 export default GarageContainer;
