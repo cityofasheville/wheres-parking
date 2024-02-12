@@ -5,9 +5,8 @@ import city_logo_no_text from './city_logo_no_text.svg';
 const city_owned = ['Biltmore Ave.Garage', "Harrah's Cherokee Center Garage", 'Rankin Ave Garage', 'Wall Street Garage'];
 
 const GarageCard = ({ available, coords, name }) => {
-  // Function to remove "Garage" from the name if applicable
   const formatName = (garageName) => {
-    const garageSuffix = " Garage";
+    const garageSuffix = ".Garage";
     return garageName.endsWith(garageSuffix) ? garageName.slice(0, -garageSuffix.length) : garageName;
   };
 
@@ -32,7 +31,6 @@ const GarageCard = ({ available, coords, name }) => {
             <img src={icon} alt={altText} className={iconNameClass} />
             <span className="GarageCard-name-text">
               {formatName(name)}
-              <span className="hidden">garage</span>
             </span>
           </span>
           <span className="GarageCard-available">
