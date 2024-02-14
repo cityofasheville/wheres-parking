@@ -16,29 +16,20 @@ const GarageContainer = () => {
     const [cityGarages, setCityGarages] = useState([]);
     const [countyGarages, setCountyGarages] = useState([]);
 
-    const updateGarageData = async () => {
-        const cityData = await fetchGarageData('https://s3.amazonaws.com/avl-parking-decks/spaces.json');
-        const collegeData = await fetchGarageData('https://s3.amazonaws.com/bc-parking-decks/164College');
-        const coxeData = await fetchGarageData('https://s3.amazonaws.com/bc-parking-decks/40Coxe');
-
-        if (cityData) setCityGarages(cityData.decks || []);
-        if (collegeData && coxeData) {
-            setCountyGarages([
-                {
-                    name: collegeData.decks?.[0]?.name || '164 College Street',
-                    available: collegeData.decks?.[0]?.available || 'Unable to determine',
-                    coords: collegeData.decks?.[0]?.coords || [35.591976, -82.545413],
-                },
-                {
-                    name: coxeData.decks?.[0]?.name || '40 Coxe Avenue',
-                    available: coxeData.decks?.[0]?.available || 'Unable to determine',
-                    coords: coxeData.decks?.[0]?.coords || [0, 0],
-                }
-            ]);
-        }
-    };
-
     useEffect(() => {
+        const updateGarageData = async () => {
+            const cityData = await fetchGarageData('https://s3.amazonaws.com/avl-parking-decks/spaces.json');
+            const collegeData = await fetchGarageData('https://s3.amazonaws.com/bc-parking-decks/164College');
+            const coxeData = await fetchGarageData('https://s3.amazonaws.com/bc-parking-decks/40Coxe');
+
+            if (cityData) setCityGarages(cityData.decks || []);
+            if (collegeData && coxeData) {
+                setCountyGarages([
+                    collegeData.decks?.[0] || { name: '164 College Street', available: 'Unable to determine', coords: [35.591976, -82.545413] },
+                    coxeData.decks?.[0] || { name: '40 Coxe Avenue', available: 'Unable to determine', coords: [0, 0] },
+                ]);
+            }
+        };
         updateGarageData();
         const interval = setInterval(updateGarageData, 10000);
         return () => clearInterval(interval);
@@ -47,16 +38,16 @@ const GarageContainer = () => {
     const sortedGarages = [...cityGarages, ...countyGarages].sort((a, b) => a.name.localeCompare(b.name));
 
     return (
-        <div>
-            <div className="GarageContainer-data-labels">
-                <span>Garage name</span>
-                <span>Open spaces</span>
+        <div className="d-flex flex-column align-items-center my-4">
+            <div className="d-flex justify-content-between text-muted mb-2 w-100" style={{ maxWidth: '600px' }}>
+                <strong>Garage name</strong>
+                <strong>Open spaces</strong>
             </div>
-            <div>
+            <div className="w-100 d-flex flex-column align-items-stretch" style={{ maxWidth: '600px' }}>
                 {sortedGarages.map(deck => (
                     <GarageCard
-                        name={deck.name}
                         key={deck.name}
+                        name={deck.name}
                         available={deck.available}
                         coords={deck.coords}
                     />

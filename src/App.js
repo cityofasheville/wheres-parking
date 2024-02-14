@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import ReactGA from 'react-ga';
-// Import assets and components
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import GarageContainer from './GarageContainer';
-// Import logos and icons
 import city_logo_no_text from './city_logo_no_text.svg';
 import city_logo from './city_logo.svg';
 import bc_logo from './bc_logo.png';
@@ -14,38 +13,35 @@ const App = () => {
   useEffect(() => {
     if (window.location.href.indexOf('cityofasheville.github.io') > -1) {
       ReactGA.initialize('UA-137810331-1');
-      ReactGA.set({ page: window.location.pathname });
       ReactGA.pageview(window.location.pathname);
     }
   }, []);
 
   return (
-    <main className="App">
-      <header className="App-header">
-        <img src={city_logo_no_text} className="App-logo-no-text" alt="logo" />
-        <h1 className="App-title">Where's Parking?</h1>
-        <p className="App-intro">
-          Open spots in Asheville parking decks
-        </p>
+    <div className="container my-4">
+      <header className="text-center mb-5">
+        <img src={city_logo_no_text} alt="City logo" className="mb-3" style={{ maxWidth: '80px', height: 'auto' }} />
+        <h1 className="h2 mb-3">Where's Parking?</h1>
+        <p className="lead">Open spots in Asheville parking decks</p>
       </header>
-      <section className="App-content">
-        <header>
-          <h2 className="App-instructions">Click on a parking deck below for Google map directions
-            <img src={direction_icon} className="App-direction_icon" alt="direction sign icon" />
-          </h2>
-        </header>
-        <GarageContainer />
-      </section>
-      <footer className="App-footer">
-        <div>
-          <img src={city_logo} alt="City of Asheville logo" className="App-logo" />
-          <div className="App-cooperation">in cooperation with</div>
-          <div className="App-cooperation-small">with</div>
-          <img src={bc_logo} alt="Buncombe County logo" className="App-bc-logo" />
+      <div className="text-center mb-4">
+        <p className="mb-3" style={{ fontSize: '1rem', color: '#6c757d' }}>Click on a parking deck below for Google map directions
+          <img src={direction_icon} alt="direction sign icon" className="ml-2" style={{ width: '20px', verticalAlign: 'bottom' }} />
+        </p>
+      </div>
+      <GarageContainer />
+      <footer className="mt-5 pt-4 border-top text-muted text-center">
+        <img src={city_logo} alt="City of Asheville logo" style={{ width: '100px', margin: '0 5px' }} />
+        <span className="mx-2">in cooperation with</span>
+        <img src={bc_logo} alt="Buncombe County logo" style={{ width: '160px', margin: '0 5px' }} />
+        <div className="mt-3">
+          It's open source! Fork it on
+          <a href="https://github.com/cityofasheville/wheres-parking" target="_blank" rel="noopener noreferrer" className="text-primary ml-1">
+            GitHub <img src={git_hub} alt="" style={{ width: '24px' }} />
+          </a>
         </div>
-        <div className="App-open-source">It's open source! Fork it on <a href="https://github.com/cityofasheville/wheres-parking" target="_blank" rel="noopener noreferrer">GitHub <img src={git_hub} alt="" /> </a></div>
       </footer>
-    </main>
+    </div>
   );
 }
 
