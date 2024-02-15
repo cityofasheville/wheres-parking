@@ -32,7 +32,8 @@ const App = () => {
       <GarageContainer />
       <footer className="mt-5 pt-4 border-top text-muted text-center">
         <img src={city_logo} alt="City of Asheville logo" style={{ width: '100px', margin: '0 5px' }} />
-        <span className="mx-2">in cooperation with</span>
+        <span className="mx-2 cooperation-text-long">in cooperation with</span>
+        <span className="mx-2 cooperation-text-short d-inline d-md-none">with</span> {/* Show "with" only on xs to sm screens */}
         <img src={bc_logo} alt="Buncombe County logo" style={{ width: '160px', margin: '0 5px' }} />
         <div className="mt-3">
           It's open source! Fork it on

@@ -258,3 +258,18 @@ footer a:hover {
 @media (max-height: 620px) {
   .GarageCard-card { height: 38px }
 }
+
+/* Hide elements by default and show them only on larger screens */
+.cooperation-text-long {
+  display: none;
+}
+
+/* On larger screens, hide the short text and show the long text */
+@media (min-width: 768px) {
+  .cooperation-text-long {
+    display: inline;
+  }
+  .cooperation-text-short {
+    display: none;
+  }
+}
