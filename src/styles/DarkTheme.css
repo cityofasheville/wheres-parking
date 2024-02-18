@@ -1,0 +1,65 @@
+/* Dark theme colors and styles */
+body.dark-theme {
+    --primary-bg-color: #202124;
+    --primary-text-color: #e8eaed;
+    --secondary-bg-color: #333; /* Slightly lighter background for hover effect */
+    --link-color: #8ab4f8;
+    --border-color: #5f6368; /* This can be set to transparent if you don't want borders in dark mode */
+    --card-bg-color: #333333; /* Dark card background */
+    --icon-filter: invert(1); /* This will invert icons to a lighter color */
+    --footer-text-color: #bdc1c6;
+    --light-text-color: #bdc1c6;
+    --text-color: #e8eaed; /* Light text for readability in dark mode */
+  }
+  
+
+body.dark-theme .dark-theme-text {
+    color: #bdc1c6;
+}
+
+body.dark-theme .App-footer {
+    color: var(--footer-text-color);
+}
+
+body.dark-theme .garage-card {
+    border: none; /* Remove borders in dark theme */
+    background-color: var(--secondary-bg-color); /* Set background color for the card */
+}
+
+body.dark-theme .garage-card:hover {
+    background-color: var(--secondary-bg-color);
+}
+
+body.dark-theme .dropdown-menu {
+    background-color: #333;
+    color: var(--primary-text-color);
+    border: 1px solid #555;
+}
+
+body.dark-theme .dropdown-menu a:hover,
+body.dark-theme .dropdown-menu a:focus {
+    background-color: #444;
+    /* Lighten the background color on hover/focus */
+}
+
+body.dark-theme .dropdown-item::before {
+    color: var(--link-color);
+    /* Color of the checkmark in dark mode */
+}
+
+body.dark-theme .icon-sun {
+    filter: var(--icon-filter);
+}
+
+body.dark-theme .appearance-button:focus {
+    outline: none;
+}
+
+body.dark-theme .dropdown-header {
+    border-bottom-color: var(--border-color);
+    /* Ensure visibility of the separator */
+}
+
+.dark-theme .invert-logo {
+    filter: invert(1);
+}

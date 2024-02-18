@@ -1,0 +1,22 @@
+/* Links.css */
+
+/* Link Styles */
+a {
+    color: var(--link-color);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Adjustments for links in dark theme context */
+  body.dark-theme a {
+    color: var(--link-color);
+  }
+  
+  body.dark-theme a:hover {
+    text-decoration: underline;
+    color: var(--link-hover-color);
+  }
+  

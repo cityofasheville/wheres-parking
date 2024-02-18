@@ -1,0 +1,22 @@
+:root {
+    --primary-bg-color: #ffffff;
+    /* Light background for cards */
+    --primary-text-color: #000000;
+    /* Dark text for readability */
+    --secondary-bg-color: #f0f0f0;
+    /* A lighter grey for hover effects */
+    --link-color: #007bff;
+    /* Blue for links */
+    --border-color: #dee2e6;
+    /* Light grey for borders */
+    --card-bg-color: #f7f7f7;
+    /* White background for cards */
+    --icon-filter: none;
+    /* No filter on icons for light mode */
+    --footer-text-color: #6c757d;
+    /* A darker grey for footer text */
+    --light-text-color: #6c757d;
+    /* A standard grey for less prominent text */
+    --text-color: #212529;
+    /* Very dark grey, almost black for main text */
+}

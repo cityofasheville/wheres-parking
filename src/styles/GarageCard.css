@@ -1,0 +1,36 @@
+/* GarageCard.css */
+.garage-card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: var(--card-bg-color); /* Slightly darker background in light mode */
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 8px; /* Rounded corners for the card */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  }
+  
+  .garage-card:hover {
+    background-color: var(--secondary-bg-color); /* This will be set in DarkTheme.css for dark mode */
+  }
+  
+  .garage-card-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    filter: var(--icon-filter); /* This will invert colors in dark mode */
+  }
+  
+  .garage-card-name,
+  .garage-card-available {
+    font-weight: 500;
+    color: var(--text-color); /* This will be set in DarkTheme.css for dark mode */
+    font-size: 0.875rem;
+  }
+  
+  /* Additional styles for dark mode are in DarkTheme.css */
+  

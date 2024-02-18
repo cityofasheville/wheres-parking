@@ -1,0 +1,122 @@
+/* Appearance Selector Dropdown Styles */
+
+/* Align the dropdown to the top right corner */
+.appearance-selector {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+    z-index: 1000;
+}
+
+.appearance-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    /* Position relative for the tooltip */
+}
+
+.icon-sun {
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: transform 0.2s ease;
+}
+
+.icon-sun:hover {
+    transform: scale(1.1);
+}
+
+/* Remove the outline that appears when the button is focused for a cleaner look */
+.appearance-button:focus {
+    outline: none;
+}
+
+/* Tooltip styling */
+.tooltip {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    transform: translateY(-10px);
+    z-index: 1002;
+    /* Above the dropdown */
+    visibility: hidden;
+    /* Hide it with visibility */
+    opacity: 0;
+    /* Hide it with opacity */
+    transition: visibility 0s, opacity 0.3s linear;
+    /* Transition for fading in/out */
+}
+
+/* Show the tooltip after a delay when hovering over the button */
+.appearance-button:hover .tooltip {
+    visibility: visible;
+    /* Show the tooltip */
+    opacity: 1;
+    /* Fade in the tooltip */
+    transition-delay: 1s;
+    /* Delay the visibility change */
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 2rem;
+    right: 0;
+    background-color: var(--card-bg-color);
+    min-width: 160px;
+    margin-top: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+}
+
+/* Style for when the dropdown is to be shown */
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /* Smooth transition for hover effect */
+}
+
+/* Show the checkmark for the selected item */
+.dropdown-item.selected::before {
+    content: '✓';
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+/* Hover and focus styles for dropdown items */
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: var(--secondary-bg-color);
+    color: var(--primary-text-color);
+}
+
+/* Style for the dropdown header */
+.dropdown-header {
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    color: var(--text-color);
+    background: transparent;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 0.5rem;
+    cursor: default;
+}
