@@ -10,6 +10,7 @@ import './styles/DarkTheme.css';
 import GarageContainer from './GarageContainer';
 import Appearance from './Appearance';
 import Footer from './Footer';
+import MyMap from './MyMap'; // Import the MyMap component
 import city_logo_no_text from './city_logo_no_text.svg';
 import direction_icon from './direction_icon.svg';
 
@@ -33,6 +34,7 @@ const App = () => {
           <img src={direction_icon} alt="direction sign icon" className="ml-2" style={{ width: '20px', verticalAlign: 'bottom' }} />
         </p>
       </div>
+      <MyMap /> {/* Integrate the MyMap component here */}
       <GarageContainer />
       <Appearance />
       <Footer />
