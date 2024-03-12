@@ -7,6 +7,7 @@ import './styles/Links.css';
 import './styles/GarageCard.css';
 import './styles/AppearanceSelector.css';
 import './styles/DarkTheme.css';
+import './styles/InfoWindow.css';
 import GarageContainer from './GarageContainer';
 import Appearance from './Appearance';
 import Footer from './Footer';

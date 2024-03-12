@@ -31,9 +31,9 @@ const MyMap = ({ garages, highlightedGarage }) => {
                             position={{ lat: highlightedGarage.coords[0], lng: highlightedGarage.coords[1] }}
                             onCloseClick={() => {/* Implement functionality to handle closing the InfoWindow if needed */}}
                         >
-                            <div>
-                                <h2>{highlightedGarage.name}</h2>
-                                <p>Available Spaces: {highlightedGarage.available}</p>
+                            <div className="info-window-content">
+                                <h2 className="info-window-title">{highlightedGarage.name}</h2>
+                                <p className="info-window-body">Available Spaces: {highlightedGarage.available}</p>
                             </div>
                         </InfoWindow>
                     )}
