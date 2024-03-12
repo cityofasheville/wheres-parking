@@ -10,11 +10,10 @@ body.dark-theme {
     --footer-text-color: #bdc1c6;
     --light-text-color: #bdc1c6;
     --text-color: #e8eaed; /* Light text for readability in dark mode */
-  }
-  
+}
 
 body.dark-theme .dark-theme-text {
-    color: #bdc1c6;
+    color: var(--light-text-color);
 }
 
 body.dark-theme .App-footer {
@@ -31,20 +30,18 @@ body.dark-theme .garage-card:hover {
 }
 
 body.dark-theme .dropdown-menu {
-    background-color: #333;
+    background-color: var(--secondary-bg-color);
     color: var(--primary-text-color);
-    border: 1px solid #555;
+    border: 1px solid var(--border-color);
 }
 
 body.dark-theme .dropdown-menu a:hover,
 body.dark-theme .dropdown-menu a:focus {
-    background-color: #444;
-    /* Lighten the background color on hover/focus */
+    background-color: #444; /* Lighten the background color on hover/focus */
 }
 
 body.dark-theme .dropdown-item::before {
-    color: var(--link-color);
-    /* Color of the checkmark in dark mode */
+    color: var(--link-color); /* Color of the checkmark in dark mode */
 }
 
 body.dark-theme .icon-sun {
@@ -56,10 +53,35 @@ body.dark-theme .appearance-button:focus {
 }
 
 body.dark-theme .dropdown-header {
-    border-bottom-color: var(--border-color);
-    /* Ensure visibility of the separator */
+    border-bottom-color: var(--border-color); /* Ensure visibility of the separator */
 }
 
 .dark-theme .invert-logo {
     filter: invert(1);
+}
+
+/* Dark Theme Navbar Customizations */
+body.dark-theme .navbar {
+  background-color: var(--primary-bg-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+body.dark-theme .navbar-brand .navbar-title,
+body.dark-theme .navbar-brand .navbar-subtitle,
+body.dark-theme a {
+  color: var(--primary-text-color);
+}
+
+body.dark-theme .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+body.dark-theme .navbar-brand .navbar-logo {
+  filter: var(--icon-filter);
+}
+
+/* Remove underline from navbar links on hover for dark theme as well */
+body.dark-theme .navbar-brand:hover,
+body.dark-theme .navbar-brand:focus {
+    text-decoration: none !important;
 }

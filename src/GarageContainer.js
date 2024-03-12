@@ -13,7 +13,7 @@ const fetchGarageData = async (url) => {
     }
 };
 
-const GarageContainer = () => {
+const GarageContainer = ({ setHoveredGarage }) => {
     const { theme } = useTheme();
     const [cityGarages, setCityGarages] = useState([]);
     const [countyGarages, setCountyGarages] = useState([]);
@@ -48,7 +48,6 @@ const GarageContainer = () => {
 
     const sortedGarages = [...cityGarages, ...countyGarages].sort((a, b) => a.name.localeCompare(b.name));
 
-    // Adjust the text color based on the theme
     const headerStyle = {
         color: theme === 'dark' ? '#bdc1c6' : 'inherit',
         maxWidth: '600px',
@@ -61,12 +60,22 @@ const GarageContainer = () => {
                 <strong>Open spaces</strong>
             </div>
             <div className="w-100 d-flex flex-column align-items-stretch" style={{ maxWidth: '600px' }}>
-                {sortedGarages.map(deck => (
+                {sortedGarages.map((deck) => (
                     <GarageCard
                         key={deck.name}
                         name={deck.name}
                         available={deck.available}
                         coords={deck.coords}
+                        // Passing onMouseEnter and onMouseLeave handlers
+                        onMouseEnter={() => {
+                            console.log("Mouse entered", deck);
+                            setHoveredGarage(deck);
+                        }}
+                        onMouseLeave={() => {
+                            console.log("Mouse left", deck);
+                            setHoveredGarage(null);
+                        }}
+
                     />
                 ))}
             </div>

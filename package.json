@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "http://cityofasheville.github.io/wheres-parking",
   "dependencies": {
+    "@react-google-maps/api": "^2.19.3",
     "bootstrap": "^5.3.2",
     "gh-pages": "^2.0.1",
     "leaflet": "^1.9.4",

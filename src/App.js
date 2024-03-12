@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactGA from 'react-ga';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/Variables.css';
@@ -10,11 +10,12 @@ import './styles/DarkTheme.css';
 import GarageContainer from './GarageContainer';
 import Appearance from './Appearance';
 import Footer from './Footer';
-import MyMap from './MyMap'; // Import the MyMap component
-import city_logo_no_text from './city_logo_no_text.svg';
-import direction_icon from './direction_icon.svg';
+import MyMap from './MyMap';
+import Navbar from './Navbar';
 
 const App = () => {
+  const [hoveredGarage, setHoveredGarage] = useState(null);
+
   useEffect(() => {
     if (window.location.href.indexOf('cityofasheville.github.io') > -1) {
       ReactGA.initialize('UA-137810331-1');
@@ -22,23 +23,28 @@ const App = () => {
     }
   }, []);
 
+  const garageData = []; // actual garage data will go here
+
+  useEffect(() => {
+    console.log("Hovered Garage:", hoveredGarage);
+  }, [hoveredGarage]);
+
   return (
-    <div className="container my-4">
-      <header className="text-center mb-5">
-        <img src={city_logo_no_text} alt="City logo" className="mb-3" style={{ maxWidth: '80px', height: 'auto' }} />
-        <h1 className="h2 mb-3">Where's Parking?</h1>
-        <p className="lead">Open spots in Asheville parking decks</p>
-      </header>
-      <div className="text-center mb-4">
-        <p className="mb-3" style={{ fontSize: '1rem', color: '#6c757d' }}>Click on a parking deck below for Google map directions
-          <img src={direction_icon} alt="direction sign icon" className="ml-2" style={{ width: '20px', verticalAlign: 'bottom' }} />
-        </p>
+    <>
+      <Navbar />
+      <div className="container-fluid my-4">
+        <div className="row">
+          <div className="col-lg-6 mb-4">
+            <GarageContainer setHoveredGarage={setHoveredGarage} />
+          </div>
+          <div className="col-lg-6">
+            <MyMap garages={garageData} highlightedGarage={hoveredGarage} />
+          </div>
+        </div>
+        <Appearance />
+        <Footer />
       </div>
-      <MyMap /> {/* Integrate the MyMap component here */}
-      <GarageContainer />
-      <Appearance />
-      <Footer />
-    </div>
+    </>
   );
 };
 

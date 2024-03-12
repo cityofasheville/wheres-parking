@@ -1,17 +1,46 @@
 import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
+import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 
-const MyMap = () => {
-    return (
-        <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '400px', width: '100%' }}>
-            <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            {/* Markers will be added here */}
-        </MapContainer>
-    );
+const containerStyle = {
+    width: '100%', // Match parent width
+    height: '100%' // Match parent height
 };
 
+const center = {
+    lat: 35.5951,
+    lng: -82.5515
+};
+
+const MyMap = ({ garages, highlightedGarage }) => {
+    return (
+        <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
+            <div style={{ maxWidth: '600px', height: '100%' }}> {/* Container to match GarageContainer */}
+                <GoogleMap
+                    mapContainerStyle={containerStyle}
+                    center={center}
+                    zoom={10}
+                >
+                    {garages.map(garage => (
+                        <Marker
+                            key={garage.name}
+                            position={{ lat: garage.coords[0], lng: garage.coords[1] }}
+                        />
+                    ))}
+                    {highlightedGarage && (
+                        <InfoWindow
+                            position={{ lat: highlightedGarage.coords[0], lng: highlightedGarage.coords[1] }}
+                            onCloseClick={() => {/* Implement functionality to handle closing the InfoWindow if needed */}}
+                        >
+                            <div>
+                                <h2>{highlightedGarage.name}</h2>
+                                <p>Available Spaces: {highlightedGarage.available}</p>
+                            </div>
+                        </InfoWindow>
+                    )}
+                </GoogleMap>
+            </div>
+        </LoadScript>
+    );
+};
 
 export default MyMap;

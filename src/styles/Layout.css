@@ -1,69 +1,96 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-/* Typography & Basic Layout */
 body {
-    margin: 0;
-    font-family: Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
-    background-color: var(--primary-bg-color);
-    color: var(--primary-text-color);
+  margin: 0;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: var(--primary-bg-color);
+  color: var(--primary-text-color);
 }
 
-h1,
-h2,
-h3,
-p {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
+h1, h2, h3, p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
 }
 
 a {
-    color: var(--link-color);
-    text-decoration: none;
+  color: var(--link-color);
+  text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-.App {
-    text-align: center;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
+/* Since we're using Bootstrap, we don't need custom App styling for layout */
 .App-header {
-    background-color: var(--secondary-bg-color);
-    padding: 2rem 1rem;
-    margin-bottom: 2rem;
+  background-color: var(--secondary-bg-color);
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Footer should be at the bottom of the content or viewport, whichever is taller */
+html, body {
+  height: 100%;
+}
+
+.content {
+  min-height: calc(100vh - (footer height + any additional offset));
 }
 
 .App-footer {
-    padding: 1rem 0;
-    background-color: var(--secondary-bg-color);
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    color: var(--footer-text-color);
-  }
-
-.hidden {
-    position: absolute;
-    left: -10000px;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
+  padding: 1rem 0;
+  background-color: var(--secondary-bg-color);
+  color: var(--footer-text-color);
 }
 
-/* Responsive Design Adjustments */
+.hidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 @media (max-width: 768px) {
-    .cooperation-text {
-        display: none;
-    }
+  .cooperation-text {
+    display: none;
+  }
+}
+
+/* Bootstrap's container-fluid takes care of padding and width */
+/* No need for .app-content and .content-row styles as Bootstrap handles this */
+
+/* Navbar Customization */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-logo {
+  width: 80px;
+}
+
+.navbar-title,
+.navbar-subtitle {
+  margin: 0;
+}
+
+.navbar-title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.navbar-subtitle {
+  font-size: 1rem;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+  text-decoration: none;
 }
