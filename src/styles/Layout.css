@@ -1,3 +1,4 @@
+/* Layout.css */
 *,
 *::before,
 *::after {
@@ -25,45 +26,45 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Since we're using Bootstrap, we don't need custom App styling for layout */
-.App-header {
-  background-color: var(--secondary-bg-color);
-  padding: 2rem 1rem;
-  margin-bottom: 2rem;
+/* Ensuring the footer is always at the bottom */
+html {
+  position: relative;
+  min-height: 100%;
 }
 
-/* Footer should be at the bottom of the content or viewport, whichever is taller */
-html, body {
-  height: 100%;
-}
-
-.content {
-  min-height: calc(100vh - (footer height + any additional offset));
+body {
+  margin-bottom: 60px; /* Height of the footer */
 }
 
 .App-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   padding: 1rem 0;
   background-color: var(--secondary-bg-color);
   color: var(--footer-text-color);
+  display: flex;
+  justify-content: center; /* Center the content */
+  flex-wrap: nowrap; /* Prevent wrapping */
+  align-items: center;
 }
 
-.hidden {
-  position: absolute;
-  left: -10000px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
+/* Adjusting for smaller screen sizes */
 @media (max-width: 768px) {
-  .cooperation-text {
-    display: none;
+  .App-footer {
+    justify-content: space-around; /* Adjust content spacing on smaller screens */
+    padding-left: 10px; /* Adjust padding to ensure content does not touch the screen edges */
+    padding-right: 10px;
   }
 }
 
-/* Bootstrap's container-fluid takes care of padding and width */
-/* No need for .app-content and .content-row styles as Bootstrap handles this */
+
+/* Hiding elements on mobile */
+@media (max-width: 768px) {
+  .appearance-selector, .map-container {
+    display: none;
+  }
+}
 
 /* Navbar Customization */
 .navbar-brand {

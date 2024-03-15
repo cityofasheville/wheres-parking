@@ -18,29 +18,29 @@ const GarageContainer = ({ setHoveredGarage }) => {
     const [cityGarages, setCityGarages] = useState([]);
     const [countyGarages, setCountyGarages] = useState([]);
 
-    const updateGarageData = async () => {
-        const cityData = await fetchGarageData('https://s3.amazonaws.com/avl-parking-decks/spaces.json');
-        const collegeData = await fetchGarageData('https://s3.amazonaws.com/bc-parking-decks/164College');
-        const coxeData = await fetchGarageData('https://s3.amazonaws.com/bc-parking-decks/40Coxe');
-
-        if (cityData) setCityGarages(cityData.decks || []);
-        if (collegeData && coxeData) {
-            setCountyGarages([
-                {
-                    name: collegeData.decks?.[0]?.name || '164 College Street',
-                    available: collegeData.decks?.[0]?.available || 'Unable to determine',
-                    coords: collegeData.decks?.[0]?.coords || [35.591976, -82.545413],
-                },
-                {
-                    name: coxeData.decks?.[0]?.name || '40 Coxe Avenue',
-                    available: coxeData.decks?.[0]?.available || 'Unable to determine',
-                    coords: coxeData.decks?.[0]?.coords || [0, 0],
-                }
-            ]);
-        }
-    };
-
     useEffect(() => {
+        const updateGarageData = async () => {
+            const urls = [
+                'https://s3.amazonaws.com/avl-parking-decks/spaces.json',
+                'https://s3.amazonaws.com/bc-parking-decks/164College',
+                'https://s3.amazonaws.com/bc-parking-decks/40Coxe',
+            ];
+            const dataPromises = urls.map(url => fetchGarageData(url));
+            Promise.all(dataPromises).then(results => {
+                const cityData = results[0];
+                const collegeData = results[1];
+                const coxeData = results[2];
+
+                if (cityData) setCityGarages(cityData.decks || []);
+                if (collegeData && coxeData) {
+                    setCountyGarages([
+                        collegeData.decks?.[0] ? { ...collegeData.decks[0], name: '164 College Street' } : {},
+                        coxeData.decks?.[0] ? { ...coxeData.decks[0], name: '40 Coxe Avenue' } : {},
+                    ].filter(garage => garage.name)); // Filter out any undefined entries
+                }
+            });
+        };
+
         updateGarageData();
         const interval = setInterval(updateGarageData, 10000);
         return () => clearInterval(interval);
@@ -48,36 +48,25 @@ const GarageContainer = ({ setHoveredGarage }) => {
 
     const sortedGarages = [...cityGarages, ...countyGarages].sort((a, b) => a.name.localeCompare(b.name));
 
-    const headerStyle = {
-        color: theme === 'dark' ? '#bdc1c6' : 'inherit',
-        maxWidth: '600px',
-    };
-
     return (
-        <div className="d-flex flex-column align-items-center my-4">
-            <div className="d-flex justify-content-between mb-2 w-100" style={headerStyle}>
-                <strong>Garage name</strong>
-                <strong>Open spaces</strong>
-            </div>
-            <div className="w-100 d-flex flex-column align-items-stretch" style={{ maxWidth: '600px' }}>
-                {sortedGarages.map((deck) => (
-                    <GarageCard
-                        key={deck.name}
-                        name={deck.name}
-                        available={deck.available}
-                        coords={deck.coords}
-                        // Passing onMouseEnter and onMouseLeave handlers
-                        onMouseEnter={() => {
-                            console.log("Mouse entered", deck);
-                            setHoveredGarage(deck);
-                        }}
-                        onMouseLeave={() => {
-                            console.log("Mouse left", deck);
-                            setHoveredGarage(null);
-                        }}
-
-                    />
-                ))}
+        <div className="container-fluid px-0 my-4">
+            <div className="row no-gutters justify-content-center">
+                <div className="col-12 col-md-10 col-lg-8">
+                    <div className="d-flex justify-content-between mb-2" style={{ color: theme === 'dark' ? '#bdc1c6' : 'inherit', maxWidth: '600px', margin: '0 auto' }}>
+                        <strong>Garage name</strong>
+                        <strong>Open spaces</strong>
+                    </div>
+                    {sortedGarages.map(deck => (
+                        <GarageCard
+                            key={deck.name}
+                            name={deck.name}
+                            available={deck.available}
+                            coords={deck.coords}
+                            onMouseEnter={() => setHoveredGarage(deck)}
+                            onMouseLeave={() => setHoveredGarage(null)}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     );
