@@ -26,6 +26,10 @@ const App = () => {
 
   const garageData = []; // actual garage data will go here
 
+  const handleCloseInfoWindow = () => {
+    setHoveredGarage(null);
+  };
+
   useEffect(() => {
     console.log("Hovered Garage:", hoveredGarage);
   }, [hoveredGarage]);
@@ -39,7 +43,7 @@ const App = () => {
             <GarageContainer setHoveredGarage={setHoveredGarage} />
           </div>
           <div className="col-lg-6">
-            <MyMap garages={garageData} highlightedGarage={hoveredGarage} />
+            <MyMap garages={garageData} highlightedGarage={hoveredGarage} onCloseInfoWindow={handleCloseInfoWindow} />
           </div>
         </div>
         <Appearance />

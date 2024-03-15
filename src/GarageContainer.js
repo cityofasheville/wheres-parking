@@ -63,7 +63,6 @@ const GarageContainer = ({ setHoveredGarage }) => {
                             available={deck.available}
                             coords={deck.coords}
                             onMouseEnter={() => setHoveredGarage(deck)}
-                            onMouseLeave={() => setHoveredGarage(null)}
                         />
                     ))}
                 </div>
