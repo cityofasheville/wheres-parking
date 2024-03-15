@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { ThemeContext } from './ThemeContext';
-import sunSVG from './sun.svg'; 
+import sunSVG from './sun.svg';
 import moonSVG from './moon.svg';
 
 const Appearance = () => {
@@ -33,7 +33,7 @@ const Appearance = () => {
     return (
         <div className="appearance-selector">
             <button className={`appearance-button ${isDropdownOpen ? 'show' : ''}`} onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-                <img src={appearanceIcon} alt="Change appearance" className="icon-sun"/>
+                <img src={appearanceIcon} alt="Change appearance" className="icon-sun" />
                 <div className="tooltip">Change appearance</div>
             </button>
             <div className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}>

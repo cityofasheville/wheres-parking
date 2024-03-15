@@ -14,7 +14,7 @@ const center = {
 const MyMap = ({ garages, highlightedGarage }) => {
     return (
         <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
-            <div style={{ maxWidth: '600px', height: '100%' }}> {/* Container to match GarageContainer */}
+            <div style={{ maxWidth: '600px', height: '100%' }}>
                 <GoogleMap
                     mapContainerStyle={containerStyle}
                     center={center}
@@ -29,7 +29,7 @@ const MyMap = ({ garages, highlightedGarage }) => {
                     {highlightedGarage && (
                         <InfoWindow
                             position={{ lat: highlightedGarage.coords[0], lng: highlightedGarage.coords[1] }}
-                            onCloseClick={() => {/* Implement functionality to handle closing the InfoWindow if needed */}}
+                            onCloseClick={() => { }}
                         >
                             <div className="info-window-content">
                                 <h2 className="info-window-title">{highlightedGarage.name}</h2>

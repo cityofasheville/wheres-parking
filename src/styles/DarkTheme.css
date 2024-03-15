@@ -1,15 +1,16 @@
-/* Dark theme colors and styles */
 body.dark-theme {
     --primary-bg-color: #202124;
     --primary-text-color: #e8eaed;
-    --secondary-bg-color: #333; /* Slightly lighter background for hover effect */
+    --secondary-bg-color: #333;
+    /* Slightly lighter background for hover effect */
     --link-color: #8ab4f8;
-    --border-color: #5f6368; /* This can be set to transparent if you don't want borders in dark mode */
-    --card-bg-color: #333333; /* Dark card background */
-    --icon-filter: invert(1); /* This will invert icons to a lighter color */
+    --border-color: #5f6368;
+    --card-bg-color: #333333;
+    /* Dark card background */
+    --icon-filter: invert(1);
     --footer-text-color: #bdc1c6;
     --light-text-color: #bdc1c6;
-    --text-color: #e8eaed; /* Light text for readability in dark mode */
+    --text-color: #e8eaed;
 }
 
 body.dark-theme .dark-theme-text {
@@ -21,8 +22,10 @@ body.dark-theme .App-footer {
 }
 
 body.dark-theme .garage-card {
-    border: none; /* Remove borders in dark theme */
-    background-color: var(--secondary-bg-color); /* Set background color for the card */
+    border: none;
+    /* Remove borders in dark theme */
+    background-color: var(--secondary-bg-color);
+    /* Set background color for the card */
 }
 
 body.dark-theme .garage-card:hover {
@@ -37,11 +40,13 @@ body.dark-theme .dropdown-menu {
 
 body.dark-theme .dropdown-menu a:hover,
 body.dark-theme .dropdown-menu a:focus {
-    background-color: #444; /* Lighten the background color on hover/focus */
+    background-color: #444;
+    /* Lighten the background color on hover/focus */
 }
 
 body.dark-theme .dropdown-item::before {
-    color: var(--link-color); /* Color of the checkmark in dark mode */
+    color: var(--link-color);
+    /* Color of the checkmark in dark mode */
 }
 
 body.dark-theme .icon-sun {
@@ -53,7 +58,7 @@ body.dark-theme .appearance-button:focus {
 }
 
 body.dark-theme .dropdown-header {
-    border-bottom-color: var(--border-color); /* Ensure visibility of the separator */
+    border-bottom-color: var(--border-color);
 }
 
 .dark-theme .invert-logo {
@@ -62,26 +67,29 @@ body.dark-theme .dropdown-header {
 
 /* Dark Theme Navbar Customizations */
 body.dark-theme .navbar {
-  background-color: var(--primary-bg-color);
-  border-bottom: 1px solid var(--border-color);
+    background-color: var(--primary-bg-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
 body.dark-theme .navbar-brand .navbar-title,
 body.dark-theme .navbar-brand .navbar-subtitle,
 body.dark-theme a {
-  color: var(--primary-text-color);
+    color: var(--primary-text-color);
 }
 
 body.dark-theme .navbar-toggler-icon {
-  filter: invert(1);
+    filter: invert(1);
 }
 
 body.dark-theme .navbar-brand .navbar-logo {
-  filter: var(--icon-filter);
+    filter: var(--icon-filter);
 }
 
-/* Remove underline from navbar links on hover for dark theme as well */
 body.dark-theme .navbar-brand:hover,
 body.dark-theme .navbar-brand:focus {
     text-decoration: none !important;
+}
+
+.dark-theme .instruction-text {
+    color: white;
 }

@@ -1,6 +1,3 @@
-/* Appearance Selector Dropdown Styles */
-
-/* Align the dropdown to the top right corner */
 .appearance-selector {
     position: absolute;
     top: 3rem;
@@ -17,7 +14,6 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    /* Position relative for the tooltip */
 }
 
 .icon-sun {

@@ -68,6 +68,9 @@ const GarageContainer = ({ setHoveredGarage }) => {
                     ))}
                 </div>
             </div>
+            <div className={`instruction-text ${theme}`}>
+                Click on a parking deck above for Google map directions
+            </div>
         </div>
     );
 };

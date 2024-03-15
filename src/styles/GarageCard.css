@@ -33,7 +33,22 @@
 /* Ensure cards are responsive and fit well on mobile screens */
 @media (max-width: 768px) {
   .garage-card {
-    margin: 0.5rem; /* Adjust margins for mobile screens */
-    max-width: calc(100% - 1rem); /* Ensure card width fits screen width minus margins */
+    margin: 0.5rem;
+    /* Adjust margins for mobile screens */
+    max-width: calc(100% - 1rem);
+    /* Ensure card width fits screen width minus margins */
   }
+}
+
+.instruction-text {
+  font-size: 1.125rem; /* text-lg */
+  font-style: italic;
+  font-weight: 300; /* font-semibold */
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.light-theme .instruction-text {
+  color: #1a202c;
 }
