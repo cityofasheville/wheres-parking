@@ -30,9 +30,9 @@ const App = () => {
     setHoveredGarage(null);
   };
 
-  useEffect(() => {
-    console.log("Hovered Garage:", hoveredGarage);
-  }, [hoveredGarage]);
+  // useEffect(() => {
+  //   console.log("Hovered Garage:", hoveredGarage);
+  // }, [hoveredGarage]);
 
   return (
     <>
