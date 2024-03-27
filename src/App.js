@@ -1,49 +1,56 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactGA from 'react-ga';
-import city_logo_no_text from './city_logo_no_text.svg';
-import city_logo from './city_logo.svg';
-import bc_logo from './bc_logo.png';
-import direction_icon from './direction_icon.svg';
-import git_hub from './git_hub.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/Variables.css';
+import './styles/Layout.css';
+import './styles/Links.css';
+import './styles/GarageCard.css';
+import './styles/AppearanceSelector.css';
+import './styles/DarkTheme.css';
+import './styles/InfoWindow.css';
 import GarageContainer from './GarageContainer';
+import Appearance from './Appearance';
+import Footer from './Footer';
+import MyMap from './MyMap';
+import Navbar from './Navbar';
 
-if (window.location.href.indexOf('cityofasheville.github.io') > -1) {
-  ReactGA.initialize('UA-137810331-1');
-  ReactGA.set({ page: window.location.pathname });
-  ReactGA.pageview(window.location.pathname);
-}
+const App = () => {
+  const [hoveredGarage, setHoveredGarage] = useState(null);
 
-class App extends Component {
-  render() {
-    return (
-      <main className="App">
-        <header className="App-header">
-          <img src={city_logo_no_text} className="App-logo-no-text" alt="logo" />
-          <h1 className="App-title">Where's Parking?</h1>
-          <p className="App-intro">
-            Open spots in Asheville parking decks
-          </p>
-        </header>
-        <section className="App-content">
-          <header>
-            <h2 className="App-instructions">Click on a parking deck below for Google map directions
-              <img src={direction_icon} className="App-direction_icon" alt="direction sign icon" />
-            </h2>
-          </header>
-          <GarageContainer />
-        </section>
+  useEffect(() => {
+    if (window.location.href.indexOf('cityofasheville.github.io') > -1) {
+      ReactGA.initialize('UA-137810331-1');
+      ReactGA.pageview(window.location.pathname);
+    }
+  }, []);
 
+  const garageData = []; // actual garage data will go here
 
-        <footer className="App-footer">
-          <div>
-            <img src={city_logo} alt="City of Asheville logo" className="App-logo" /><div className="App-cooperation">in cooperation with</div><div className="App-cooperation-small">with</div><img src={bc_logo} alt="Buncombe County logo" className="App-bc-logo" />
+  const handleCloseInfoWindow = () => {
+    setHoveredGarage(null);
+  };
+
+  // useEffect(() => {
+  //   console.log("Hovered Garage:", hoveredGarage);
+  // }, [hoveredGarage]);
+
+  return (
+    <>
+      <Navbar />
+      <div className="container-fluid my-4">
+        <div className="row">
+          <div className="col-lg-6 mb-4">
+            <GarageContainer setHoveredGarage={setHoveredGarage} />
           </div>
-          <div className="App-open-source">It's open source! Fork it on <a href="https://github.com/cityofasheville/wheres-parking" target="_blank" rel="noopener noreferrer">GitHub <img src={git_hub} alt="" /> </a></div>
-        </footer>
-      </main>
-    );
-  }
-}
+          <div className="col-lg-6">
+            <MyMap garages={garageData} highlightedGarage={hoveredGarage} onCloseInfoWindow={handleCloseInfoWindow} />
+          </div>
+        </div>
+        <Appearance />
+        <Footer />
+      </div>
+    </>
+  );
+};
 
 export default App;

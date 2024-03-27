@@ -1,0 +1,106 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: var(--primary-bg-color);
+  color: var(--primary-text-color);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Ensuring the footer is always at the bottom */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  /* Height of the footer */
+}
+
+.App-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem 0;
+  background-color: var(--secondary-bg-color);
+  color: var(--footer-text-color);
+  display: flex;
+  justify-content: center;
+  /* Center the content */
+  flex-wrap: nowrap;
+  /* Prevent wrapping */
+  align-items: center;
+}
+
+/* Adjusting for smaller screen sizes */
+@media (max-width: 768px) {
+  .App-footer {
+    justify-content: space-around;
+    /* Adjust content spacing on smaller screens */
+    padding-left: 10px;
+    /* Adjust padding to ensure content does not touch the screen edges */
+    padding-right: 10px;
+  }
+}
+
+
+/* Hiding elements on mobile */
+@media (max-width: 768px) {
+
+  .appearance-selector,
+  .map-container {
+    display: none;
+  }
+}
+
+/* Navbar Customization */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-logo {
+  width: 80px;
+}
+
+.navbar-title,
+.navbar-subtitle {
+  margin: 0;
+}
+
+.navbar-title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.navbar-subtitle {
+  font-size: 1rem;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+  text-decoration: none;
+}
