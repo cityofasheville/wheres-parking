@@ -2,7 +2,7 @@
   "name": "wheres-parking",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://cityofasheville.github.io/wheres-parking",
+  "homepage": ".",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "react": "^17.0.2",
