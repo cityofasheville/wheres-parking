@@ -22,7 +22,7 @@ const GarageCard = props => (
           />
           <span className="GarageCard-name-text">
             { 
-              props.name.length > 3 && props.name.substring(props.name.length - 6) === 'Garage' ? props.name.substring(0, props.name.length - 7)
+              props.name.includes('Center') || props.name.includes('Garage') ? props.name.replace(/Center/, '').replace(/Garage$/, '').replace(/\./g, '').trim()
               :
               props.name
             }
