@@ -18,4 +18,4 @@ You can grab the feeds from these AWS S3 buckets:
 
 
 ## Deploying
-This is deployed on AWS Amplify on the main branch.  To deploy new changes, make commits to main branch and Amplify will automatically redeploy.
+This is deployed on AWS Amplify on the main branch.  To deploy new changes, make commits to main branch and Amplify will automatically redeploy.  The previous github pages deployment still exists at http://cityofasheville.github.io/wheres-parking/ , but is being redirected to the new site.
