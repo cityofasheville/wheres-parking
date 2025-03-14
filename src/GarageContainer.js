@@ -36,7 +36,7 @@ class GarageContainer extends Component {
                 this.setState({
                     county_garages: {
                         decks: [{
-                            name: collegeJSON.decks && collegeJSON.decks.length > 0 ? collegeJSON.decks[0].name : '164 College Street',
+                            name: collegeJSON.decks && collegeJSON.decks.length > 0 ? 'College Street' : '164 College Street', //Replacing collegeJSON.decks[0].name with 'College Street'
                             available: collegeJSON.decks && collegeJSON.decks.length > 0 ? collegeJSON.decks[0].available : 'Unable to determine',
                             coords: collegeJSON.decks && collegeJSON.decks.length > 0 ? collegeJSON.decks[0].coords : [35.591976,-82.545413],
                         },
