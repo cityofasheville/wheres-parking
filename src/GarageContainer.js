@@ -19,11 +19,24 @@ class GarageContainer extends Component {
         fetch('https://s3.amazonaws.com/avl-parking-decks/spaces.json')
         .then((response) => response.json())
         .then((responseJSON) => {
+            const modifiedData = {
+                ...responseJSON, 
+                //Rankin Ave will be closed for 1 month starting 8/1
+                //<start> Comment this section when it reopens
+                decks: responseJSON.decks.map(garage => {
+                    if (garage.name === "Rankin Ave Garage") {
+                        return { ...garage, available: '0' };
+                    }
+                    return garage;
+                })
+                //<end> Comment this section when it reopens
+            };
             this.setState({
-                city_garages: responseJSON,
+                city_garages: modifiedData, 
             });
         })
         .catch(error => console.log(error));
+        
     }
 
     getCountyCounts() {
