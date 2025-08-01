@@ -25,7 +25,7 @@ class GarageContainer extends Component {
                 //<start> Comment this section when it reopens
                 decks: responseJSON.decks.map(garage => {
                     if (garage.name === "Rankin Ave Garage") {
-                        return { ...garage, available: '0' };
+                        return { ...garage, available: 'closed' };
                     }
                     return garage;
                 })
