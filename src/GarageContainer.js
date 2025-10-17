@@ -23,12 +23,12 @@ class GarageContainer extends Component {
                 ...responseJSON, 
                 //Rankin Ave will be closed for 1 month starting 8/1
                 //<start> Comment this section when it reopens
-                decks: responseJSON.decks.map(garage => {
-                    if (garage.name === "Wall Street Garage") {
-                        return { ...garage, available: 'closed' };
-                    }
-                    return garage;
-                })
+                // decks: responseJSON.decks.map(garage => {
+                //     if (garage.name === "Wall Street Garage") {
+                //         return { ...garage, available: 'closed' };
+                //     }
+                //     return garage;
+                // })
                 //<end> Comment this section when it reopens
             };
             this.setState({
