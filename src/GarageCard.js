@@ -1,57 +1,34 @@
-import React from 'react';
 import bc_logo_brand from './bc_logo_brand.png';
 import city_logo_no_text from './city_logo_no_text.svg';
 
-const city_owned = [
-  'Biltmore Ave.Garage',
-  "Harrah's Cherokee Center Garage",
-  'Rankin Ave Garage',
-  'Wall Street Garage',
-];
-
 function GarageCard(props) {
+  const link_href_google = `https://maps.google.com/?saddr=Current+Location&daddr=${props.coords[0]},${props.coords[1]}`;
+  const link_href_local = `/${props.slug}`;
+
   return (
-    <tr style={{}}>
+    <tr className="font-light text-lg sm:text-2xl">
       {props.available === undefined || props.coords === undefined ? (
         <td colSpan={2}>Loading...</td>
       ) : (
         <>
-          {/* <td className="GarageCard-name"> */}
-          <td className="">
+          <td className="p-0">
             <a
-              // className="GarageCard-card"
-              className=""
-              href={`https://maps.google.com/?saddr=Current+Location&daddr=${props.coords[0]},${props.coords[1]}`}
-              target="_blank"
+              className="h-full items-center flex gap-2 py-4 px-2 w-full decoration-none border-l-4 border-transparent hover:border-wp-blue-dark focus:border-wp-blue-dark focus-within:border-wp-blue-dark hover:text-slate-900 focus:text-slate-900 focus-within:text-slate-900 hover:bg-wp-blue-light focus:bg-wp-blue-light focus-within:bg-wp-blue-light"
+              href={link_href_local}
+              // target="_blank"
               rel="noopener noreferrer"
-              style={{
-                display: 'flex',
-                gap: '0.5rem',
-                padding: '1rem 0',
-                // minHeight: '3rem',
-                // alignItems: 'baseline',
-                width: '100%',
-                // height: '100%',
-                textDecoration: 'none',
-                color: 'inherit',
-              }}
             >
-              <div style={{ paddingLeft: '0.5rem' }}>
+              <div className="min-w-8">
                 <img
-                  src={city_owned.indexOf(props.name) > -1 ? city_logo_no_text : bc_logo_brand}
+                  src={props.jurisdiction === 'city' ? city_logo_no_text : bc_logo_brand}
                   alt={
-                    city_owned.indexOf(props.name) > -1
+                    props.jurisdiction === 'city'
                       ? 'City of Asheville icon'
                       : 'Buncombe County icon'
                   }
-                  className={
-                    city_owned.indexOf(props.name) > -1
-                      ? 'GarageCard-city-icon'
-                      : 'GarageCard-bc-icon'
-                  }
+                  className="w-8 h-8"
                 />
               </div>
-              {/* <span className="GarageCard-name-text" style={{ flex: 1 }}> */}
               <span className="">
                 {props.name.includes('Center') || props.name.includes('Garage')
                   ? props.name
@@ -64,9 +41,8 @@ function GarageCard(props) {
               </span>
             </a>
           </td>
-          {/* <td className="GarageCard-available" style={{ width: '5rem' }}> */}
-          <td className="" style={{ textAlign: 'center' }}>
-            <div className="space-count" style={{ padding: '1rem' }}>
+          <td className="p-0" style={{ textAlign: 'center' }}>
+            <div className="font-medium" style={{ padding: '1rem' }}>
               {props.available}
               <span className="hidden">open spaces</span>
             </div>

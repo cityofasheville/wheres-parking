@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+
+  .text-link {
+    @apply text-wp-blue-dark underline hover:no-underline hover:text-slate-900 focus:no-underline focus:text-slate-900 underline-offset-4;
+  }
+
+  .text-link-no-decoration {
+    @apply text-wp-blue-dark no-underline hover:underline hover:text-slate-900 focus:underline focus:text-slate-900;
+  }
+
+  .btn-sm {
+    @apply flex items-center justify-center px-2 py-1 text-sm;
+  }
+
+  .btn-blue {
+    @apply flex items-center justify-center px-4 py-2 no-underline hover:no-underline text-aux-gray bg-wp-blue-dark hocus:bg-slate-300 hocus:text-slate-900 border border-slate-500 rounded-md shadow-sm;
+  }
+
+  .btn-gray {
+    @apply flex items-center justify-center px-4 py-2 no-underline hover:no-underline text-wp-blue-dark bg-aux-gray hocus:bg-slate-300 border border-slate-500 rounded-md shadow-sm;
+  }
+
+  table {
+    @apply border-collapse w-full;
+  }
+
+  table,
+  th,
+  td {
+    @apply border border-slate-200;
+  }
+
+}

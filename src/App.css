@@ -199,14 +199,14 @@ footer a:hover {
   min-height: 3rem;
 } */
 
-.GarageCard-card:hover,
+/* .GarageCard-card:hover,
 table a:hover,
 table a:focus,
 table a:focus-within {
   background: #f6fcff;
   font-weight: 400;
   color: #002e5c;
-}
+} */
 
 .GarageCard-name-text {
   vertical-align: top;
@@ -233,42 +233,34 @@ table a:focus-within {
   overflow: hidden;
 }
 
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
 
-th {
+
+/* th {
   padding: 12px
 }
 
 thead th {
   font-size: 1.25rem;
   color: #a0a0a0;
-  /* margin-bottom: 2px; */
-  font-weight: 300;
-  background: #f6fcff;
-  color: #002e5c;
-  font-weight: normal;
-  text-align: left;
+font-weight: 300;
+background: #f6fcff;
+color: #002e5c;
+font-weight: normal;
+text-align: left;
 }
 
-tbody td {
+*/
+/* tbody td {
   font-size: 1.5em;
   font-weight: 300;
-  /* min-height: 44px; */
-}
+} */
 
 .space-count {
   font-size: 1.75rem;
   font-weight: 400;
 }
 
-table,
-th,
-td {
-  border: 1px solid #e9e9e9;
-}
+
 
 @media (max-width: 365px) {
   .App-logo-no-text {
