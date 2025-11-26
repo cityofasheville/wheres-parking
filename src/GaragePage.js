@@ -42,7 +42,7 @@ function GaragePage(params) {
           </header>
           <iframe
             title="Map showing pin for <?php echo the_title() ?> at <?php echo $meeting_location; ?>"
-            src={`https://www.google.com/maps/embed/v1/directions?key=AIzaSyCmuGYLxWRnYPXUHqCU0kuiURMVNb-50u8&origin=Current+Location&destination=${garage.coords[0]},${garage.coords[1]}`}
+            src={`https://www.google.com/maps/embed/v1/directions?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&origin=Current+Location&destination=${garage.coords[0]},${garage.coords[1]}`}
             width="100%"
             height="400px"
             className="mb-6"
