@@ -5,6 +5,7 @@ function GaragePage(params) {
   const [garage, setGarage] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isAndroid, setIsAndroid] = useState(false);
+  const [isIframe, setIsIframe] = useState(false);
 
   // const slug = params.params.garage;
 
@@ -22,9 +23,19 @@ function GaragePage(params) {
   useEffect(() => {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
     const androidDetected = /android/i.test(userAgent);
+    const isIframe = typeof window !== 'undefined' && window.self !== window.top;
+
+    setIsIframe(isIframe);
     setIsAndroid(androidDetected);
 
-    // console.log('User agent detected:', userAgent);
+    console.log(
+      'User agent detected:',
+      userAgent,
+      'Android:',
+      androidDetected,
+      'Is iframe:',
+      isIframe
+    );
   }, []);
 
   return (
@@ -53,12 +64,12 @@ function GaragePage(params) {
               ? 'Managed by City of Asheville'
               : 'Managed by Buncombe County'}
           </p>
-          {!isAndroid && (
+          {(!isIframe || (isIframe && !isAndroid)) && (
             <>
               <a
                 href={`https://maps.google.com/?saddr=Current+Location&daddr=${garage.coords[0]},${garage.coords[1]}`}
                 target="_blank"
-                className="w-full bg-blue-800 hover:bg-wp-blue-dark active:bg-wp-blue-dark text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-blue-200 shadow-lg"
+                className="w-full bg-wp-blue-dark hover:bg-blue-800 focus:bg-blue-800 active:bg-blue-800 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-blue-200 shadow-lg"
               >
                 <i className="bi bi-signpost-split" aria-hidden="true"></i>Open Navigation App
               </a>
