@@ -6,6 +6,7 @@ function GaragePage(params) {
   const [loading, setLoading] = useState(true);
   const [isAndroid, setIsAndroid] = useState(false);
   const [isIframe, setIsIframe] = useState(false);
+  const [isWebView, setIsWebView] = useState(false);
 
   // const slug = params.params.garage;
 
@@ -25,8 +26,19 @@ function GaragePage(params) {
     const androidDetected = /android/i.test(userAgent);
     const isIframe = typeof window !== 'undefined' && window.self !== window.top;
 
+    // from https://github.com/atomantic/is-ua-webview/blob/main/data/rules.js
+    const rules = [
+      'WebView',
+      '(iPhone|iPod|iPad)(?!.*Safari)',
+      'Android.*(;\\s+wv|Version/\\d.\\d\\s+Chrome/\\d+(\\.0){3})',
+      'Linux; U; Android',
+    ];
+    const webviewRegExp = new RegExp('(' + rules.join('|') + ')', 'ig');
+    const isWebView = userAgent.match(webviewRegExp) !== null;
+
     setIsIframe(isIframe);
     setIsAndroid(androidDetected);
+    setIsWebView(isWebView);
 
     console.log(
       'User agent detected:',
@@ -34,7 +46,9 @@ function GaragePage(params) {
       'Android:',
       androidDetected,
       'Is iframe:',
-      isIframe
+      isIframe,
+      'Is webview:',
+      isWebView
     );
   }, []);
 
@@ -64,7 +78,7 @@ function GaragePage(params) {
               ? 'Managed by City of Asheville'
               : 'Managed by Buncombe County'}
           </p>
-          {(!isIframe || (isIframe && !isAndroid)) && (
+          {(!isAndroid || (isAndroid && !isWebView)) && (
             <>
               <a
                 href={`https://maps.google.com/?saddr=Current+Location&daddr=${garage.coords[0]},${garage.coords[1]}`}
