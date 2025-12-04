@@ -651,6 +651,10 @@ table,
   margin-top: 0.75rem;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 .flex {
   display: flex;
 }
@@ -732,6 +736,10 @@ table,
   justify-content: center;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
 .gap-1 {
   gap: 0.25rem;
 }
@@ -776,19 +784,14 @@ table,
   border-color: rgb(0 46 92 / 0.2);
 }
 
-.bg-blue-800 {
+.bg-wp-blue-dark {
   --tw-bg-opacity: 1;
-  background-color: rgb(30 64 175 / var(--tw-bg-opacity, 1));
+  background-color: rgb(0 46 92 / var(--tw-bg-opacity, 1));
 }
 
 .bg-wp-blue-light {
   --tw-bg-opacity: 1;
   background-color: rgb(246 252 255 / var(--tw-bg-opacity, 1));
-}
-
-.bg-wp-blue-dark {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 46 92 / var(--tw-bg-opacity, 1));
 }
 
 .p-0 {
@@ -848,6 +851,10 @@ table,
 
 .align-baseline {
   vertical-align: baseline;
+}
+
+.align-middle {
+  vertical-align: middle;
 }
 
 .text-3xl {
@@ -952,9 +959,9 @@ table,
   border-color: rgb(0 46 92 / var(--tw-border-opacity, 1));
 }
 
-.hover\:bg-wp-blue-dark:hover {
+.hover\:bg-blue-800:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(0 46 92 / var(--tw-bg-opacity, 1));
+  background-color: rgb(30 64 175 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:bg-wp-blue-light:hover {
@@ -962,14 +969,14 @@ table,
   background-color: rgb(246 252 255 / var(--tw-bg-opacity, 1));
 }
 
-.hover\:bg-blue-800:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(30 64 175 / var(--tw-bg-opacity, 1));
-}
-
 .hover\:text-slate-900:hover {
   --tw-text-opacity: 1;
   color: rgb(15 23 42 / var(--tw-text-opacity, 1));
+}
+
+.hover\:underline:hover {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
 }
 
 .focus\:border-wp-blue-dark:focus {
@@ -977,24 +984,19 @@ table,
   border-color: rgb(0 46 92 / var(--tw-border-opacity, 1));
 }
 
-.focus\:bg-wp-blue-light:focus {
-  --tw-bg-opacity: 1;
-  background-color: rgb(246 252 255 / var(--tw-bg-opacity, 1));
-}
-
 .focus\:bg-blue-800:focus {
   --tw-bg-opacity: 1;
   background-color: rgb(30 64 175 / var(--tw-bg-opacity, 1));
 }
 
+.focus\:bg-wp-blue-light:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(246 252 255 / var(--tw-bg-opacity, 1));
+}
+
 .focus\:text-slate-900:focus {
   --tw-text-opacity: 1;
   color: rgb(15 23 42 / var(--tw-text-opacity, 1));
-}
-
-.active\:bg-wp-blue-dark:active {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 46 92 / var(--tw-bg-opacity, 1));
 }
 
 .active\:bg-blue-800:active {

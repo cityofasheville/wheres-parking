@@ -59,7 +59,12 @@ function GaragePage(params) {
       {!loading && garage && (
         <main>
           <header className="mb-6">
-            <h2 className="text-3xl font-light mb-4">{!loading && garage && `${garage.name}`}</h2>
+            <div className="w-full flex items-center justify-between gap-4 mb-4">
+              <h2 className="text-3xl font-light">{!loading && garage && `${garage.name}`}</h2>
+              <a href="/" className="text-wp-blue-dark hover:underline inline-block">
+                Back
+              </a>
+            </div>
             <div className="flex items-baseline gap-1 border border-wp-blue-dark/20 rounded bg-wp-blue-light px-4 py-2 w-max">
               <div className="text-3xl font-light">{garage.available}</div>
               <div>available spaces</div>
@@ -67,7 +72,7 @@ function GaragePage(params) {
           </header>
           <iframe
             title="Map showing pin for <?php echo the_title() ?> at <?php echo $meeting_location; ?>"
-            src={`https://www.google.com/maps/embed/v1/directions?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&origin=Current+Location&destination=${garage.coords[0]},${garage.coords[1]}`}
+            src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&q=${garage.address}&zoom=16`}
             width="100%"
             height="400px"
             className="mb-6"
@@ -81,7 +86,7 @@ function GaragePage(params) {
           {(!isAndroid || (isAndroid && !isWebView)) && (
             <>
               <a
-                href={`https://maps.google.com/?saddr=Current+Location&daddr=${garage.coords[0]},${garage.coords[1]}`}
+                href={`https://maps.google.com/?saddr=Current+Location&daddr=${garage.address}`}
                 target="_blank"
                 className="w-full bg-wp-blue-dark hover:bg-blue-800 focus:bg-blue-800 active:bg-blue-800 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-blue-200 shadow-lg"
               >
