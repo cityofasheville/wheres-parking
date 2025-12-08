@@ -614,9 +614,31 @@ table,
   }
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.my-0 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.my-6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .mb-1 {
@@ -647,8 +669,16 @@ table,
   margin-right: 0.25rem;
 }
 
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
 .mt-3 {
   margin-top: 0.75rem;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
 }
 
 .inline-block {
@@ -853,10 +883,6 @@ table,
   vertical-align: baseline;
 }
 
-.align-middle {
-  vertical-align: middle;
-}
-
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -902,6 +928,10 @@ table,
   font-style: italic;
 }
 
+.not-italic {
+  font-style: normal;
+}
+
 .text-slate-400 {
   --tw-text-opacity: 1;
   color: rgb(148 163 184 / var(--tw-text-opacity, 1));
@@ -920,6 +950,11 @@ table,
 .text-wp-blue-dark {
   --tw-text-opacity: 1;
   color: rgb(0 46 92 / var(--tw-text-opacity, 1));
+}
+
+.text-green-800 {
+  --tw-text-opacity: 1;
+  color: rgb(22 101 52 / var(--tw-text-opacity, 1));
 }
 
 .shadow-lg {
@@ -967,6 +1002,10 @@ table,
 .hover\:bg-wp-blue-light:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(246 252 255 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:font-semibold:hover {
+  font-weight: 600;
 }
 
 .hover\:text-slate-900:hover {

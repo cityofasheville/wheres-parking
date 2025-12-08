@@ -37,7 +37,7 @@ function GarageCard(props) {
                       .replace(/\./g, '')
                       .trim()
                   : props.name}
-                <span className="hidden">garage</span>
+                <span className="hidden"> garage</span>
               </span>
             </a>
           </td>

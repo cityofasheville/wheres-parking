@@ -19,12 +19,16 @@ async function fetchAllGarageData() {
     cityData.decks.forEach((garage) => {
       if (garage.name.includes('Wall')) {
         garage.address = '45 Wall St, Asheville, NC 28801';
+        garage.coords = [35.59463097210988, -82.55698255217752];
       } else if (garage.name.includes('Biltmore')) {
         garage.address = '61 S Lexington Ave, Asheville, NC 28801';
+        garage.coords = [35.592505193480854, -82.55159180267485];
       } else if (garage.name.includes('Harrah')) {
         garage.address = '68 Rankin Ave, Asheville, NC 28801';
+        garage.coords = [35.59670054502899, -82.55416494084967];
       } else if (garage.name.includes('Rankin')) {
         garage.address = '12 Rankin Ave, Asheville, NC 28801';
+        garage.coords = [35.59574383564083, -82.5538445980123];
       }
 
       all_garage_data.push({
@@ -37,31 +41,22 @@ async function fetchAllGarageData() {
     });
 
     all_garage_data.push({
-      name:
-        collegeJSON.decks && collegeJSON.decks.length > 0 ? 'College Street' : '164 College Street',
+      name: 'College Street',
       available:
-        collegeJSON.decks && collegeJSON.decks.length > 0
-          ? collegeJSON.decks[0].available
-          : 'Unable to determine',
-      coords:
-        collegeJSON.decks && collegeJSON.decks.length > 0
-          ? collegeJSON.decks[0].coords
-          : [35.591976, -82.545413],
+        collegeJSON.decks && collegeJSON.decks.length > 0 ? collegeJSON.decks[0].available : 'NA',
+      coords: [35.597220568749506, -82.54918944554281],
       slug: 'college-street',
       jurisdiction: 'county',
       address: '164 College St, Asheville, NC 28801',
     });
 
     all_garage_data.push({
-      name: coxeJSON.decks && coxeJSON.decks.length > 0 ? coxeJSON.decks[0].name : '52 Coxe Avenue',
-      available:
-        coxeJSON.decks && coxeJSON.decks.length > 0
-          ? coxeJSON.decks[0].available
-          : 'Unable to determine',
-      coords: coxeJSON.decks && coxeJSON.decks.length > 0 ? coxeJSON.decks[0].coords : [0, 0],
+      name: 'Coxe/Sears Alley',
+      available: coxeJSON.decks && coxeJSON.decks.length > 0 ? coxeJSON.decks[0].available : 'NA',
+      coords: [35.59364815599471, -82.55473928784323],
       slug: 'coxe-avenue',
       jurisdiction: 'county',
-      address: '52 Coxe Ave, Asheville, NC 28801',
+      address: '11 Sears Alley, Asheville, NC 28801',
     });
 
     return sortGarages(all_garage_data);
