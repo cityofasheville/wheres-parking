@@ -631,11 +631,6 @@ table,
   margin-right: auto;
 }
 
-.my-0 {
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-
 .my-6 {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
@@ -647,10 +642,6 @@ table,
 
 .mb-12 {
   margin-bottom: 3rem;
-}
-
-.mb-2 {
-  margin-bottom: 0.5rem;
 }
 
 .mb-4 {
@@ -665,6 +656,10 @@ table,
   margin-left: 0.25rem;
 }
 
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
 .mr-1 {
   margin-right: 0.25rem;
 }
@@ -677,8 +672,8 @@ table,
   margin-top: 0.75rem;
 }
 
-.ml-2 {
-  margin-left: 0.5rem;
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
 .inline-block {
@@ -932,6 +927,11 @@ table,
   font-style: normal;
 }
 
+.text-green-800 {
+  --tw-text-opacity: 1;
+  color: rgb(22 101 52 / var(--tw-text-opacity, 1));
+}
+
 .text-slate-400 {
   --tw-text-opacity: 1;
   color: rgb(148 163 184 / var(--tw-text-opacity, 1));
@@ -950,11 +950,6 @@ table,
 .text-wp-blue-dark {
   --tw-text-opacity: 1;
   color: rgb(0 46 92 / var(--tw-text-opacity, 1));
-}
-
-.text-green-800 {
-  --tw-text-opacity: 1;
-  color: rgb(22 101 52 / var(--tw-text-opacity, 1));
 }
 
 .shadow-lg {

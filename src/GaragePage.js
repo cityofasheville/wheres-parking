@@ -86,17 +86,31 @@ function GaragePage(params) {
       {!loading && garage && (
         <main>
           <header className="mb-6">
-            <div className="w-full flex items-center justify-between gap-4">
+            <div className="w-full flex items-center justify-between gap-4 mb-2">
               <h2 className="text-3xl font-light">{!loading && garage && `${garage.name}`}</h2>
               <a href="/" className="text-wp-blue-dark hover:underline inline-block">
                 Back
               </a>
             </div>
-            <p className="text-slate-600 mb-4">
+            <p className="text-slate-600 mb-2">
               {garage.jurisdiction === 'city'
                 ? 'Managed by City of Asheville'
                 : 'Managed by Buncombe County'}
             </p>
+            <address className="text-slate-600 not-italic mb-4">
+              <span className="inline-block mr-2">Address: {garage.address}</span>
+              <button
+                className="text-wp-blue-dark hover:font-semibold inline-block"
+                onClick={() => handleCopyAddress(garage.address)}
+              >
+                <i className="bi bi-copy" aria-hidden="true"></i>
+                <span className="sr-only">Copy address to clipboard</span>
+              </button>
+              <span className="text-sm text-green-800 ml-2">
+                {addressCopied ? ' Address copied!' : ''}
+              </span>
+            </address>
+
             <div className="flex items-baseline gap-1 border border-wp-blue-dark/20 rounded bg-wp-blue-light px-4 py-2 w-max">
               <div className="text-3xl font-light">{garage.available}</div>
               <div>available spaces</div>
@@ -111,34 +125,23 @@ function GaragePage(params) {
             className="mb-6"
           ></iframe> */}
 
-          <APIProvider
-            apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
-            onLoad={() => console.log('Maps API has loaded.')}
-          >
-            <Map
-              style={{ width: '100%', height: '400px' }}
-              defaultCenter={{ lat: garage.coords[0], lng: garage.coords[1] }}
-              defaultZoom={15}
-              disableDefaultUI={false}
-              controlSize={35}
+          <div className="mb-6">
+            <APIProvider
+              apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
+              onLoad={() => console.log('Maps API has loaded.')}
             >
-              <Marker position={{ lat: garage.coords[0], lng: garage.coords[1] }} />
-            </Map>
-          </APIProvider>
+              <Map
+                style={{ width: '100%', height: '400px' }}
+                defaultCenter={{ lat: garage.coords[0], lng: garage.coords[1] }}
+                defaultZoom={15}
+                disableDefaultUI={false}
+                controlSize={35}
+              >
+                <Marker position={{ lat: garage.coords[0], lng: garage.coords[1] }} />
+              </Map>
+            </APIProvider>
+          </div>
 
-          <address className="text-slate-600 not-italic my-6">
-            <span className="inline-block mr-2">Address: {garage.address}</span>
-            <button
-              className="text-wp-blue-dark hover:font-semibold inline-block"
-              onClick={() => handleCopyAddress(garage.address)}
-            >
-              <i className="bi bi-copy" aria-hidden="true"></i>
-              <span className="sr-only">Copy address to clipboard</span>
-            </button>
-            <span className="text-sm text-green-800 ml-2">
-              {addressCopied ? ' Address copied!' : ''}
-            </span>
-          </address>
           {(!isAndroid || (isAndroid && !isWebView)) && (
             <div>
               <a
