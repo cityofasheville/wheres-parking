@@ -22,9 +22,9 @@ function App() {
         </div>
       </main>
 
-      <footer className="bg-wp-blue-light border-t border-wp-blue-dark/20">
+      <div className="bg-wp-blue-light border-t border-wp-blue-dark/20">
         <Footer />
-      </footer>
+      </div>
     </div>
   );
 }

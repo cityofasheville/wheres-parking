@@ -10,7 +10,6 @@ module.exports = {
         'wp-blue': '#3498db',
         'wp-blue-light': '#f6fcff',
       },
-      hocus: ['&:hover', '&:focus'],
     },
   },
   plugins: [],

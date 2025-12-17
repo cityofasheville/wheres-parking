@@ -1,14 +1,6 @@
 async function fetchAllGarageData() {
   let all_garage_data = [];
 
-  // addresses:
-  // 45 Wall St, Asheville, NC 28801 (Wall)
-  // 61 S Lexington Ave, Asheville, NC 28801 (Biltmore Ave)
-  // 68 Rankin Ave, Asheville, NC 28801 (Harrah's)
-  // 12 Rankin Ave, Asheville, NC 28801 (Rankin)
-  // 52 Coxe Ave, Asheville, NC 28801
-  // 164 College St, Asheville, NC 28801 (College Street)
-
   try {
     const [cityData, collegeJSON, coxeJSON] = await Promise.all([
       fetch('https://s3.amazonaws.com/avl-parking-decks/spaces.json').then((res) => res.json()),
@@ -21,21 +13,23 @@ async function fetchAllGarageData() {
         garage.address = '45 Wall St, Asheville, NC 28801';
         garage.coords = [35.59463097210988, -82.55698255217752];
       } else if (garage.name.includes('Biltmore')) {
+        garage.name = 'Biltmore Avenue Garage';
         garage.address = '61 S Lexington Ave, Asheville, NC 28801';
         garage.coords = [35.592505193480854, -82.55159180267485];
       } else if (garage.name.includes('Harrah')) {
         garage.address = '68 Rankin Ave, Asheville, NC 28801';
         garage.coords = [35.59670054502899, -82.55416494084967];
       } else if (garage.name.includes('Rankin')) {
+        garage.name = 'Rankin Avenue Garage';
         garage.address = '12 Rankin Ave, Asheville, NC 28801';
         garage.coords = [35.59574383564083, -82.5538445980123];
+        // EXAMPLE: to indicate a garage as closed, do it like this:
+        // garage.available = 'closed';
       }
 
       all_garage_data.push({
         ...garage,
-        // if a garage needs to be marked closed, do it like this:
-        // available: garage.name === "Wall Street Garage" ? 'closed' : garage.available,
-        slug: slugify(garage.name),
+        slug: slugify(garage.name.replace('Garage', '').replace('Deck', '')),
         jurisdiction: 'city',
       });
     });
@@ -43,7 +37,9 @@ async function fetchAllGarageData() {
     all_garage_data.push({
       name: 'College Street',
       available:
-        collegeJSON.decks && collegeJSON.decks.length > 0 ? collegeJSON.decks[0].available : 'NA',
+        collegeJSON.decks && collegeJSON.decks.length > 0 && collegeJSON.decks[0].available
+          ? collegeJSON.decks[0].available
+          : 'NA',
       coords: [35.597220568749506, -82.54918944554281],
       slug: 'college-street',
       jurisdiction: 'county',
@@ -52,7 +48,10 @@ async function fetchAllGarageData() {
 
     all_garage_data.push({
       name: 'Coxe/Sears Alley',
-      available: coxeJSON.decks && coxeJSON.decks.length > 0 ? coxeJSON.decks[0].available : 'NA',
+      available:
+        coxeJSON.decks && coxeJSON.decks.length > 0 && coxeJSON.decks[0].available
+          ? coxeJSON.decks[0].available
+          : 'NA',
       coords: [35.59364815599471, -82.55473928784323],
       slug: 'coxe-avenue',
       jurisdiction: 'county',

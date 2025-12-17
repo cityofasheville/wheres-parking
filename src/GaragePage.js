@@ -29,7 +29,7 @@ function GaragePage(params) {
       const allGarages = await fetchAllGarageData();
       const found = allGarages.find((g) => g.slug === params.params.garage);
       setGarage(found || null);
-    }, 10000);
+    }, 60000);
     return () => {
       clearInterval(intervalRef.current);
     };
@@ -74,7 +74,7 @@ function GaragePage(params) {
         setTimeout(() => setAddressCopied(false), 3000);
       },
       (err) => {
-        console.log('Could not copy address. Clipboard access denied.', err);
+        console.log('Unable to copy address to cloipboard.', err);
       }
     );
   }
@@ -84,7 +84,7 @@ function GaragePage(params) {
       {loading && <div>Loading garage details...</div>}
       {!loading && !garage && <div>Garage not found.</div>}
       {!loading && garage && (
-        <main>
+        <div>
           <header className="mb-6">
             <div className="w-full flex items-center justify-between gap-4 mb-2">
               <h2 className="text-3xl font-light">{!loading && garage && `${garage.name}`}</h2>
@@ -117,14 +117,6 @@ function GaragePage(params) {
             </div>
           </header>
 
-          {/* <iframe
-            title="Map showing pin for <?php echo the_title() ?> at <?php echo $meeting_location; ?>"
-            src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&q=${garage.address}&zoom=16`}
-            width="100%"
-            height="400px"
-            className="mb-6"
-          ></iframe> */}
-
           <div className="mb-6">
             <APIProvider
               apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
@@ -151,12 +143,12 @@ function GaragePage(params) {
               >
                 <i className="bi bi-signpost-split" aria-hidden="true"></i>Open Navigation App
               </a>
-              <p className="text-center text-xs text-slate-400 mt-3">
+              <p className="text-center text-xs text-slate-600 mt-3">
                 Directions calculated from your current location.
               </p>
             </div>
           )}
-        </main>
+        </div>
       )}
     </div>
   );
