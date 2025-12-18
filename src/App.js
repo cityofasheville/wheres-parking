@@ -8,11 +8,11 @@ import './tw/tw-output.css';
 function App() {
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="bg-wp-blue-light border-b border-wp-blue-dark/20 mb-6">
+      <header className="relative w-full  bg-wp-blue-light border-b border-wp-blue-dark/20 mb-6">
         <Header />
       </header>
 
-      <main className="flex-grow">
+      <main id="main-content" className="flex-grow">
         <div className="mb-12 max-w-screen-sm mx-auto px-3">
           <Switch>
             <Route path="/" component={Home} />

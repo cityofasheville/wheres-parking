@@ -1,7 +1,10 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
 
 import { fetchAllGarageData } from './utilities';
+
+const MAX_RETRIES = 3;
+const RETRY_DELAY_MS = 1000;
 
 function GaragePage(params) {
   const [garage, setGarage] = useState(null);
@@ -11,29 +14,81 @@ function GaragePage(params) {
   const [isWebView, setIsWebView] = useState(false);
   const [addressCopied, setAddressCopied] = useState(false);
 
+  const currentSlugRef = useRef(params.params?.garage);
   const intervalRef = useRef(null);
 
-  useEffect(() => {
-    async function loadGarage() {
-      setLoading(true);
-      const allGarages = await fetchAllGarageData();
-      const found = allGarages.find((g) => g.slug === params.params.garage);
-      setGarage(found || null);
-      setLoading(false);
-    }
-    loadGarage();
-  }, [params.params.garage]);
+  const garageSlug = params.params?.garage;
 
   useEffect(() => {
-    intervalRef.current = setInterval(async () => {
-      const allGarages = await fetchAllGarageData();
-      const found = allGarages.find((g) => g.slug === params.params.garage);
-      setGarage(found || null);
-    }, 60000);
+    currentSlugRef.current = params.params.garage;
+  }, [params.params.garage]);
+
+  const loadGarageData = useCallback(
+    async (isPolling = false, retryCount = 0) => {
+      if (!isPolling && retryCount === 0) {
+        setLoading(true);
+      }
+
+      try {
+        const allGarages = await fetchAllGarageData();
+
+        if (!allGarages || !Array.isArray(allGarages)) {
+          throw new Error('Received invalid garage data.');
+        }
+
+        // Bail if the user navigated away while we were fetching/waiting
+        if (garageSlug !== currentSlugRef.current) {
+          return;
+        }
+
+        const found = allGarages.find((g) => g.slug === garageSlug);
+
+        if (found) {
+          setGarage(found);
+          if (!isPolling) {
+            setLoading(false);
+          }
+        } else {
+          if (isPolling) {
+            console.warn(`Garage ${garageSlug} missing during poll. Retaining stale data.`);
+          } else {
+            if (retryCount < MAX_RETRIES) {
+              console.log(`Garage not found. Retrying... (${retryCount + 1}/${MAX_RETRIES})`);
+              await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS));
+
+              // RECURSIVE CALL: Try again with incremented count
+              return loadGarageData(false, retryCount + 1);
+            } else {
+              console.error(`Garage ${garageSlug} not found after ${MAX_RETRIES} retries.`);
+              setGarage(null);
+              setLoading(false);
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error loading garage data:', error);
+        if (!isPolling && retryCount >= MAX_RETRIES) {
+          setLoading(false);
+        }
+      }
+    },
+    [garageSlug]
+  );
+
+  useEffect(() => {
+    setGarage(null);
+    loadGarageData(false, 0);
+  }, [loadGarageData]);
+
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      loadGarageData(true, 0);
+    }, 30000);
+
     return () => {
       clearInterval(intervalRef.current);
     };
-  }, []);
+  }, [loadGarageData]);
 
   useEffect(() => {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -88,7 +143,8 @@ function GaragePage(params) {
           <header className="mb-6">
             <div className="w-full flex items-center justify-between gap-4 mb-2">
               <h2 className="text-3xl font-light">{!loading && garage && `${garage.name}`}</h2>
-              <a href="/" className="text-wp-blue-dark hover:underline inline-block">
+              <a href="/" className="text-wp-blue-dark hover:underline inline-block text-nowrap">
+                <i className="bi bi-arrow-left mr-1" aria-hidden="true"></i>
                 Back
               </a>
             </div>
@@ -129,7 +185,10 @@ function GaragePage(params) {
                 disableDefaultUI={false}
                 controlSize={35}
               >
-                <Marker position={{ lat: garage.coords[0], lng: garage.coords[1] }} />
+                <Marker
+                  position={{ lat: garage.coords[0], lng: garage.coords[1] }}
+                  title={garage.name}
+                />
               </Map>
             </APIProvider>
           </div>

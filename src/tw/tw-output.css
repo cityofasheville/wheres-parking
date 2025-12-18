@@ -626,14 +626,17 @@ table,
   border-width: 0;
 }
 
+.relative {
+  position: relative;
+}
+
+.z-50 {
+  z-index: 50;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
-}
-
-.my-6 {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
 }
 
 .mb-1 {
@@ -642,6 +645,10 @@ table,
 
 .mb-12 {
   margin-bottom: 3rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
 .mb-4 {
@@ -672,8 +679,8 @@ table,
   margin-top: 0.75rem;
 }
 
-.mb-2 {
-  margin-bottom: 0.5rem;
+.block {
+  display: block;
 }
 
 .inline-block {
@@ -777,6 +784,10 @@ table,
   gap: 1rem;
 }
 
+.text-nowrap {
+  text-wrap: nowrap;
+}
+
 .rounded {
   border-radius: 0.25rem;
 }
@@ -809,6 +820,11 @@ table,
   border-color: rgb(0 46 92 / 0.2);
 }
 
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
 .bg-wp-blue-dark {
   --tw-bg-opacity: 1;
   background-color: rgb(0 46 92 / var(--tw-bg-opacity, 1));
@@ -821,6 +837,10 @@ table,
 
 .p-0 {
   padding: 0px;
+}
+
+.p-2 {
+  padding: 0.5rem;
 }
 
 .p-3 {
@@ -860,6 +880,11 @@ table,
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .pb-4 {
@@ -930,11 +955,6 @@ table,
 .text-green-800 {
   --tw-text-opacity: 1;
   color: rgb(22 101 52 / var(--tw-text-opacity, 1));
-}
-
-.text-slate-400 {
-  --tw-text-opacity: 1;
-  color: rgb(148 163 184 / var(--tw-text-opacity, 1));
 }
 
 .text-slate-600 {
@@ -1013,6 +1033,51 @@ table,
           text-decoration-line: underline;
 }
 
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+.focus\:absolute:focus {
+  position: absolute;
+}
+
+.focus\:relative:focus {
+  position: relative;
+}
+
+.focus\:inset-x-auto:focus {
+  left: auto;
+  right: auto;
+}
+
+.focus\:inset-x-1\/2:focus {
+  left: 50%;
+  right: 50%;
+}
+
+.focus\:left-48:focus {
+  left: 12rem;
+}
+
+.focus\:top-48:focus {
+  top: 12rem;
+}
+
+.focus\:left-2:focus {
+  left: 0.5rem;
+}
+
+.focus\:top-2:focus {
+  top: 0.5rem;
+}
+
 .focus\:border-wp-blue-dark:focus {
   --tw-border-opacity: 1;
   border-color: rgb(0 46 92 / var(--tw-border-opacity, 1));
@@ -1026,6 +1091,16 @@ table,
 .focus\:bg-wp-blue-light:focus {
   --tw-bg-opacity: 1;
   background-color: rgb(246 252 255 / var(--tw-bg-opacity, 1));
+}
+
+.focus\:px-6:focus {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.focus\:py-4:focus {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .focus\:text-slate-900:focus {

@@ -18,7 +18,7 @@ function GarageContainer() {
     intervalRef.current = setInterval(async () => {
       const garageData = await fetchAllGarageData();
       setAllGarages(garageData);
-    }, 60000);
+    }, 30000);
     return () => {
       clearInterval(intervalRef.current);
     };
