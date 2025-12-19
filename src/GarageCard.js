@@ -12,7 +12,7 @@ function GarageCard(props) {
         <>
           <td className="p-0">
             <a
-              className="h-full items-center flex gap-2 py-4 px-2 w-full decoration-none border-l-4 border-transparent hover:border-wp-blue-dark focus:border-wp-blue-dark focus-within:border-wp-blue-dark hover:text-slate-900 focus:text-slate-900 focus-within:text-slate-900 hover:bg-wp-blue-light focus:bg-wp-blue-light focus-within:bg-wp-blue-light"
+              className="h-full items-center flex gap-3 py-4 px-2 w-full decoration-none border-l-4 border-transparent hover:border-wp-blue-dark focus:border-wp-blue-dark focus-within:border-wp-blue-dark hover:text-slate-900 focus:text-slate-900 focus-within:text-slate-900 hover:bg-wp-blue-light focus:bg-wp-blue-light focus-within:bg-wp-blue-light"
               href={link_href_local}
               rel="noopener noreferrer"
             >
@@ -36,6 +36,10 @@ function GarageCard(props) {
                       .trim()
                   : props.name}
                 <span className="hidden"> garage</span>
+                <br />
+                <address className="text-sm font-light text-slate-600 not-italic">
+                  {props.address}
+                </address>
               </span>
             </a>
           </td>

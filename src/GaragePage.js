@@ -132,7 +132,7 @@ function GaragePage(params) {
   }
 
   return (
-    <div className="">
+    <div className="max-w-screen-sm mx-auto px-3">
       <header className="mb-6">
         <div className="w-full flex items-center justify-between gap-4 mb-2">
           <h2 className="text-3xl font-light">{!loading && garage && `${garage.name}`}</h2>
