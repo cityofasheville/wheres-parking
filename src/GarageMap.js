@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import GarageCard from './GarageCard';
+import { useState, useEffect } from 'react';
 import { APIProvider, Map, Marker, InfoWindow } from '@vis.gl/react-google-maps';
-// 35.59531022413275, -82.55186771897137
+
 function GarageMap({ garages }) {
   const [selectedGarage, setSelectedGarage] = useState(null);
 
@@ -15,16 +14,11 @@ function GarageMap({ garages }) {
       featureType: 'poi',
       stylers: [{ visibility: 'off' }],
     },
-    // {
-    //   featureType: 'landscape.man_made',
-    //   elementType: 'labels',
-    //   stylers: [{ visibility: 'off' }],
-    // },
   ];
 
   return (
     <>
-      <p className="max-w-screen-sm mx-auto px-3 my-2">
+      <p className="sr-only max-w-screen-sm mx-auto px-0 my-2">
         <i className="bi bi-info-circle mr-1" aria-hidden="true"></i>Click on a parking deck below
         for additional information.
       </p>
@@ -35,8 +29,8 @@ function GarageMap({ garages }) {
         >
           <Map
             style={{ width: '100%', height: '540px' }}
-            defaultCenter={{ lat: 35.59531022413275, lng: -82.55186771897137 }}
-            defaultZoom={15}
+            defaultCenter={{ lat: 35.59507694605827, lng: -82.55298520128827 }}
+            defaultZoom={16}
             disableDefaultUI={false}
             controlSize={35}
             styles={cleanMapStyles}

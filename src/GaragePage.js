@@ -131,8 +131,20 @@ function GaragePage(params) {
     return <div>Garage not found. Please check the URL or try again later.</div>;
   }
 
+  const cleanMapStyles = [
+    {
+      featureType: 'administrative.neighborhood',
+      elementType: 'labels',
+      stylers: [{ visibility: 'off' }],
+    },
+    {
+      featureType: 'poi',
+      stylers: [{ visibility: 'off' }],
+    },
+  ];
+
   return (
-    <div className="max-w-screen-sm mx-auto px-3">
+    <div className="max-w-screen-sm mx-auto px-3 mb-12">
       <header className="mb-6">
         <div className="w-full flex items-center justify-between gap-4 mb-2">
           <h2 className="text-3xl font-light">{!loading && garage && `${garage.name}`}</h2>
@@ -177,6 +189,7 @@ function GaragePage(params) {
             defaultZoom={15}
             disableDefaultUI={false}
             controlSize={35}
+            styles={cleanMapStyles}
           >
             <Marker
               position={{ lat: garage.coords[0], lng: garage.coords[1] }}

@@ -4,7 +4,7 @@ function GarageTable({ garages }) {
   return (
     <div>
       <table>
-        <caption className="text-left mb-2">
+        <caption className="sr-only text-left mb-2">
           <i className="bi bi-info-circle mr-1" aria-hidden="true"></i>Click on a parking deck below
           for additional information.
         </caption>
