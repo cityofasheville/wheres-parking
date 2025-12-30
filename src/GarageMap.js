@@ -30,7 +30,7 @@ function GarageMap({ garages }) {
           <Map
             style={{ width: '100%', height: '540px' }}
             defaultCenter={{ lat: 35.59507694605827, lng: -82.55298520128827 }}
-            defaultZoom={16}
+            defaultZoom={15}
             disableDefaultUI={false}
             controlSize={35}
             styles={cleanMapStyles}
@@ -60,7 +60,7 @@ function GarageMap({ garages }) {
                     {selectedGarage.address}
                   </address>
 
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between gap-2">
                     <span className="text-lg font-medium text-green-700">
                       {selectedGarage.available} spots open
                     </span>

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
 
-import { fetchAllGarageData } from './utilities';
+import { fetchAllGarageData, fetchConsolidatedGarageData } from './utilities';
 
 const MAX_RETRIES = 3;
 const RETRY_DELAY_MS = 1000;
@@ -30,7 +30,7 @@ function GaragePage(params) {
       }
 
       try {
-        const allGarages = await fetchAllGarageData();
+        const allGarages = await fetchConsolidatedGarageData();
 
         if (!allGarages || !Array.isArray(allGarages)) {
           throw new Error('Received invalid garage data.');

@@ -34,12 +34,12 @@ async function fetchAllGarageData() {
       });
     });
 
+    const college_spaces = collegeJSON?.decks?.[0]?.available ?? 'NA';
+    const coxe_spaces = coxeJSON?.decks?.[0]?.available ?? 'NA';
+
     all_garage_data.push({
       name: 'College Street',
-      available:
-        collegeJSON.decks && collegeJSON.decks.length > 0 && collegeJSON.decks[0].available
-          ? collegeJSON.decks[0].available
-          : 'NA',
+      available: college_spaces,
       coords: [35.597220568749506, -82.54918944554281],
       slug: 'college-street',
       jurisdiction: 'county',
@@ -48,16 +48,26 @@ async function fetchAllGarageData() {
 
     all_garage_data.push({
       name: 'Coxe/Sears Alley',
-      available:
-        coxeJSON.decks && coxeJSON.decks.length > 0 && coxeJSON.decks[0].available
-          ? coxeJSON.decks[0].available
-          : 'NA',
+      available: coxe_spaces,
       coords: [35.59364815599471, -82.55473928784323],
       slug: 'coxe-avenue',
       jurisdiction: 'county',
       address: '11 Sears Alley, Asheville, NC 28801',
     });
 
+    return sortGarages(all_garage_data);
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+}
+
+async function fetchConsolidatedGarageData() {
+  let all_garage_data = [];
+  try {
+    const garage_data = await fetch('https://s3.amazonaws.com/avl-parking-decks/all-spaces.json');
+    const garage_data_json = await garage_data.json();
+    all_garage_data = garage_data_json.decks;
     return sortGarages(all_garage_data);
   } catch (error) {
     console.log(error);
@@ -82,4 +92,4 @@ function slugify(str) {
   return str;
 }
 
-export { fetchAllGarageData };
+export { fetchAllGarageData, fetchConsolidatedGarageData };

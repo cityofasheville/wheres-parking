@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import GarageTable from './GarageTable';
 import GarageMap from './GarageMap';
-import { fetchAllGarageData } from './utilities';
+import { fetchAllGarageData, fetchConsolidatedGarageData } from './utilities';
 
 function GarageContainer() {
   const [allGarages, setAllGarages] = useState([]);
@@ -10,20 +10,20 @@ function GarageContainer() {
 
   useEffect(() => {
     async function loadData() {
-      const garageData = await fetchAllGarageData();
+      const garageData = await fetchConsolidatedGarageData();
       setAllGarages(garageData);
     }
     loadData();
   }, []);
 
   useEffect(() => {
-    // intervalRef.current = setInterval(async () => {
-    //   const garageData = await fetchAllGarageData();
-    //   setAllGarages(garageData);
-    // }, 30000);
-    // return () => {
-    //   clearInterval(intervalRef.current);
-    // };
+    intervalRef.current = setInterval(async () => {
+      const garageData = await fetchConsolidatedGarageData();
+      setAllGarages(garageData);
+    }, 30000);
+    return () => {
+      clearInterval(intervalRef.current);
+    };
   }, []);
 
   if (!allGarages || allGarages.length === 0) {
