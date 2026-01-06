@@ -703,6 +703,10 @@ fieldset:focus-within {
   margin-bottom: 0.25rem;
 }
 
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -737,10 +741,6 @@ fieldset:focus-within {
 
 .mt-3 {
   margin-top: 0.75rem;
-}
-
-.mb-12 {
-  margin-bottom: 3rem;
 }
 
 .block {
@@ -1032,6 +1032,10 @@ fieldset:focus-within {
   font-weight: 400;
 }
 
+.font-semibold {
+  font-weight: 600;
+}
+
 .italic {
   font-style: italic;
 }
@@ -1111,14 +1115,18 @@ fieldset:focus-within {
   border-color: rgb(0 46 92 / var(--tw-border-opacity, 1));
 }
 
-.hover\:bg-blue-800:hover {
+.hover\:bg-wp-blue:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(30 64 175 / var(--tw-bg-opacity, 1));
+  background-color: rgb(52 152 219 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:bg-wp-blue-light:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(246 252 255 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-wp-blue-dark\/80:hover {
+  background-color: rgb(0 46 92 / 0.8);
 }
 
 .hover\:font-semibold:hover {
@@ -1140,9 +1148,9 @@ fieldset:focus-within {
   border-color: rgb(0 46 92 / var(--tw-border-opacity, 1));
 }
 
-.focus\:bg-blue-800:focus {
+.focus\:bg-wp-blue:focus {
   --tw-bg-opacity: 1;
-  background-color: rgb(30 64 175 / var(--tw-bg-opacity, 1));
+  background-color: rgb(52 152 219 / var(--tw-bg-opacity, 1));
 }
 
 .focus\:bg-wp-blue-light:focus {
@@ -1150,14 +1158,22 @@ fieldset:focus-within {
   background-color: rgb(246 252 255 / var(--tw-bg-opacity, 1));
 }
 
+.focus\:bg-wp-blue-dark\/80:focus {
+  background-color: rgb(0 46 92 / 0.8);
+}
+
 .focus\:text-slate-900:focus {
   --tw-text-opacity: 1;
   color: rgb(15 23 42 / var(--tw-text-opacity, 1));
 }
 
-.active\:bg-blue-800:active {
+.active\:bg-wp-blue:active {
   --tw-bg-opacity: 1;
-  background-color: rgb(30 64 175 / var(--tw-bg-opacity, 1));
+  background-color: rgb(52 152 219 / var(--tw-bg-opacity, 1));
+}
+
+.active\:bg-wp-blue-dark\/80:active {
+  background-color: rgb(0 46 92 / 0.8);
 }
 
 @media (min-width: 640px) {

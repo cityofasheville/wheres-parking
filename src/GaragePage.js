@@ -114,7 +114,6 @@ function GaragePage(params) {
   function handleCopyAddress(address) {
     navigator.clipboard.writeText(address).then(
       () => {
-        console.log('Address copied to clipboard!');
         setAddressCopied(true);
         setTimeout(() => setAddressCopied(false), 3000);
       },
@@ -179,10 +178,7 @@ function GaragePage(params) {
       </header>
 
       <div className="mb-6">
-        <APIProvider
-          apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
-          onLoad={() => console.log('Maps API has loaded.')}
-        >
+        <APIProvider apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
           <Map
             style={{ width: '100%', height: '400px' }}
             defaultCenter={{ lat: garage.coords[0], lng: garage.coords[1] }}
@@ -204,13 +200,10 @@ function GaragePage(params) {
           <a
             href={`https://maps.google.com/?saddr=Current+Location&daddr=${garage.address}`}
             target="_blank"
-            className="w-full bg-wp-blue-dark hover:bg-blue-800 focus:bg-blue-800 active:bg-blue-800 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-blue-200 shadow-lg"
+            className="w-full bg-wp-blue-dark hover:bg-wp-blue-dark/80 focus:bg-wp-blue-dark/80 active:bg-wp-blue-dark/80 text-white font-semibold text-xl py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-blue-200 shadow-lg"
           >
-            <i className="bi bi-signpost-split" aria-hidden="true"></i>Open Navigation App
+            <i className="bi bi-signpost-split" aria-hidden="true"></i>Open in Maps
           </a>
-          <p className="text-center text-xs text-slate-600 mt-3">
-            Directions calculated from your current location.
-          </p>
         </div>
       )}
     </div>

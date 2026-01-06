@@ -28,7 +28,7 @@ function GarageMap({ garages }) {
           onLoad={() => console.log('Maps API has loaded.')}
         >
           <Map
-            style={{ width: '100%', height: '540px' }}
+            style={{ width: '100%', height: '480px' }}
             defaultCenter={{ lat: 35.59507694605827, lng: -82.55298520128827 }}
             defaultZoom={15}
             disableDefaultUI={false}
