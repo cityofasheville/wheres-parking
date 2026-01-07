@@ -152,24 +152,35 @@ function GaragePage(params) {
             Back
           </a>
         </div>
-        <p className="text-slate-600 mb-2">
-          {garage.jurisdiction === 'city'
-            ? 'Managed by City of Asheville'
-            : 'Managed by Buncombe County'}
-        </p>
-        <address className="text-slate-600 not-italic mb-4">
+        <address className="text-slate-600 not-italic mb-2">
           <span className="inline-block mr-2">Address: {garage.address}</span>
           <button
             className="text-wp-blue-dark hover:font-semibold inline-block"
             onClick={() => handleCopyAddress(garage.address)}
           >
-            <i className="bi bi-copy" aria-hidden="true"></i>
+            <i className="bi bi-copy" aria-hidden="true" title="Copy address to clipboard"></i>
             <span className="sr-only">Copy address to clipboard</span>
           </button>
           <span className="text-sm text-green-800 ml-2">
             {addressCopied ? ' Address copied!' : ''}
           </span>
         </address>
+        <p className="text-slate-600 mb-2">
+          {garage.jurisdiction === 'city'
+            ? 'Managed by City of Asheville'
+            : 'Managed by Buncombe County'}
+        </p>
+        {garage.url && (
+          <p className="mb-6">
+            <a href={garage.url} className="text-link" target="_blank" rel="noopener noreferrer">
+              {`${
+                garage.jurisdiction === 'city' ? 'City of Asheville' : 'Buncombe County'
+              } parking information`}
+              <span className="sr-only">(opens in a new tab)</span>
+              <i className="bi bi-box-arrow-up-right ml-1" aria-hidden="true"></i>
+            </a>
+          </p>
+        )}
 
         <div className="flex items-baseline gap-1 border border-wp-blue-dark/20 rounded bg-wp-blue-light px-4 py-2 w-max">
           <div className="text-3xl font-light">{garage.available}</div>
