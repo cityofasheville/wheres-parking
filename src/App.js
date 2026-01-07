@@ -13,13 +13,11 @@ function App() {
       </header>
 
       <main id="main-content" className="flex-grow">
-        <div className="mb-12 max-w-screen-sm mx-auto px-3">
-          <Switch>
-            <Route path="/" component={Home} />
-            <Route path="/:garage" component={GaragePage} />
-            <Route>Path not found</Route>
-          </Switch>
-        </div>
+        <Switch>
+          <Route path="/" component={Home} />
+          <Route path="/:garage" component={GaragePage} />
+          <Route>Path not found</Route>
+        </Switch>
       </main>
 
       <div className="bg-wp-blue-light border-t border-wp-blue-dark/20">

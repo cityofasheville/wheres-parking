@@ -35,4 +35,37 @@
     @apply border border-slate-200;
   }
 
+  .btn-group>label {
+    @apply bg-gray-100;
+    @apply text-slate-900;
+    @apply border;
+    @apply rounded-md;
+  }
+
+  .btn-group>*:not(:last-child) {
+    @apply rounded-r-none;
+  }
+
+  .btn-group>*:not(:first-child) {
+    @apply rounded-l-none;
+    @apply border-l-0;
+  }
+
+  label:has(input:checked) {
+    @apply bg-wp-blue-dark text-white;
+  }
+
+
+  fieldset:focus-within {
+    @apply border-2 border-blue-500;
+  }
+
+  /* label:has(input:focus) {
+    @apply outline-2 outline-offset-2 outline-blue-500;
+  }
+
+  label:has(> input[type="radio"]:focus) {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+  } */
 }

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
 
-import { fetchAllGarageData } from './utilities';
+import { fetchAllGarageData, fetchConsolidatedGarageData } from './utilities';
 
 const MAX_RETRIES = 3;
 const RETRY_DELAY_MS = 1000;
@@ -30,7 +30,7 @@ function GaragePage(params) {
       }
 
       try {
-        const allGarages = await fetchAllGarageData();
+        const allGarages = await fetchConsolidatedGarageData();
 
         if (!allGarages || !Array.isArray(allGarages)) {
           throw new Error('Received invalid garage data.');
@@ -114,7 +114,6 @@ function GaragePage(params) {
   function handleCopyAddress(address) {
     navigator.clipboard.writeText(address).then(
       () => {
-        console.log('Address copied to clipboard!');
         setAddressCopied(true);
         setTimeout(() => setAddressCopied(false), 3000);
       },
@@ -131,8 +130,20 @@ function GaragePage(params) {
     return <div>Garage not found. Please check the URL or try again later.</div>;
   }
 
+  const cleanMapStyles = [
+    {
+      featureType: 'administrative.neighborhood',
+      elementType: 'labels',
+      stylers: [{ visibility: 'off' }],
+    },
+    {
+      featureType: 'poi',
+      stylers: [{ visibility: 'off' }],
+    },
+  ];
+
   return (
-    <div className="">
+    <div className="max-w-screen-sm mx-auto px-3 mb-12">
       <header className="mb-6">
         <div className="w-full flex items-center justify-between gap-4 mb-2">
           <h2 className="text-3xl font-light">{!loading && garage && `${garage.name}`}</h2>
@@ -141,24 +152,35 @@ function GaragePage(params) {
             Back
           </a>
         </div>
-        <p className="text-slate-600 mb-2">
-          {garage.jurisdiction === 'city'
-            ? 'Managed by City of Asheville'
-            : 'Managed by Buncombe County'}
-        </p>
-        <address className="text-slate-600 not-italic mb-4">
+        <address className="text-slate-600 not-italic mb-2">
           <span className="inline-block mr-2">Address: {garage.address}</span>
           <button
             className="text-wp-blue-dark hover:font-semibold inline-block"
             onClick={() => handleCopyAddress(garage.address)}
           >
-            <i className="bi bi-copy" aria-hidden="true"></i>
+            <i className="bi bi-copy" aria-hidden="true" title="Copy address to clipboard"></i>
             <span className="sr-only">Copy address to clipboard</span>
           </button>
           <span className="text-sm text-green-800 ml-2">
             {addressCopied ? ' Address copied!' : ''}
           </span>
         </address>
+        <p className="text-slate-600 mb-2">
+          {garage.jurisdiction === 'city'
+            ? 'Managed by City of Asheville'
+            : 'Managed by Buncombe County'}
+        </p>
+        {garage.url && (
+          <p className="mb-6">
+            <a href={garage.url} className="text-link" target="_blank" rel="noopener noreferrer">
+              {`${
+                garage.jurisdiction === 'city' ? 'City of Asheville' : 'Buncombe County'
+              } parking information`}
+              <span className="sr-only">(opens in a new tab)</span>
+              <i className="bi bi-box-arrow-up-right ml-1" aria-hidden="true"></i>
+            </a>
+          </p>
+        )}
 
         <div className="flex items-baseline gap-1 border border-wp-blue-dark/20 rounded bg-wp-blue-light px-4 py-2 w-max">
           <div className="text-3xl font-light">{garage.available}</div>
@@ -167,16 +189,14 @@ function GaragePage(params) {
       </header>
 
       <div className="mb-6">
-        <APIProvider
-          apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
-          onLoad={() => console.log('Maps API has loaded.')}
-        >
+        <APIProvider apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
           <Map
             style={{ width: '100%', height: '400px' }}
             defaultCenter={{ lat: garage.coords[0], lng: garage.coords[1] }}
             defaultZoom={15}
             disableDefaultUI={false}
             controlSize={35}
+            styles={cleanMapStyles}
           >
             <Marker
               position={{ lat: garage.coords[0], lng: garage.coords[1] }}
@@ -191,13 +211,10 @@ function GaragePage(params) {
           <a
             href={`https://maps.google.com/?saddr=Current+Location&daddr=${garage.address}`}
             target="_blank"
-            className="w-full bg-wp-blue-dark hover:bg-blue-800 focus:bg-blue-800 active:bg-blue-800 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-blue-200 shadow-lg"
+            className="w-full bg-wp-blue-dark hover:bg-wp-blue-dark/80 focus:bg-wp-blue-dark/80 active:bg-wp-blue-dark/80 text-white font-semibold text-xl py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-blue-200 shadow-lg"
           >
-            <i className="bi bi-signpost-split" aria-hidden="true"></i>Open Navigation App
+            <i className="bi bi-signpost-split" aria-hidden="true"></i>Open in Maps
           </a>
-          <p className="text-center text-xs text-slate-600 mt-3">
-            Directions calculated from your current location.
-          </p>
         </div>
       )}
     </div>

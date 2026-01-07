@@ -10,10 +10,6 @@ function Home() {
 
   return (
     <div className="">
-      <p className="mb-6">
-        <i className="bi bi-info-circle mr-1"></i>Click on a parking deck below for additional
-        information.
-      </p>
       <GarageContainer />
     </div>
   );
