@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet-gesture-handling';
+import Loading from './Loading';
 
-import { fetchAllGarageData, fetchConsolidatedGarageData } from './utilities';
+import { fetchConsolidatedGarageData } from './utilities';
 
 const MAX_RETRIES = 3;
 const RETRY_DELAY_MS = 1000;
@@ -124,33 +126,30 @@ function GaragePage(params) {
   }
 
   if (loading) {
-    return <div>Loading garage details...</div>;
+    return <Loading>Loading garage details...</Loading>;
   }
   if (!garage) {
-    return <div>Garage not found. Please check the URL or try again later.</div>;
+    return (
+      <div className="max-w-screen-sm mx-auto px-3 mb-12">
+        <div>Garage not found. Please check the URL or try again later.</div>
+      </div>
+    );
   }
-
-  const cleanMapStyles = [
-    {
-      featureType: 'administrative.neighborhood',
-      elementType: 'labels',
-      stylers: [{ visibility: 'off' }],
-    },
-    {
-      featureType: 'poi',
-      stylers: [{ visibility: 'off' }],
-    },
-  ];
 
   return (
     <div className="max-w-screen-sm mx-auto px-3 mb-12">
       <header className="mb-6">
         <div className="w-full flex items-center justify-between gap-4 mb-2">
           <h2 className="text-3xl font-light">{!loading && garage && `${garage.name}`}</h2>
-          <a href="/" className="text-wp-blue-dark hover:underline inline-block text-nowrap">
+          <button
+            onClick={() => {
+              history.back();
+            }}
+            className="font-medium text-wp-blue-dark hover:underline inline-block text-nowrap"
+          >
             <i className="bi bi-arrow-left mr-1" aria-hidden="true"></i>
             Back
-          </a>
+          </button>
         </div>
         <address className="text-slate-600 not-italic mb-2">
           <span className="inline-block mr-2">Address: {garage.address}</span>
@@ -189,21 +188,39 @@ function GaragePage(params) {
       </header>
 
       <div className="mb-6">
-        <APIProvider apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
-          <Map
-            style={{ width: '100%', height: '400px' }}
-            defaultCenter={{ lat: garage.coords[0], lng: garage.coords[1] }}
-            defaultZoom={15}
-            disableDefaultUI={false}
-            controlSize={35}
-            styles={cleanMapStyles}
+        <div className="w-full h-128">
+          <MapContainer
+            center={garage.coords}
+            zoom={16}
+            scrollWheelZoom={false}
+            style={{ height: '100%' }}
+            gestureHandling={true}
           >
-            <Marker
-              position={{ lat: garage.coords[0], lng: garage.coords[1] }}
-              title={garage.name}
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+              url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
             />
-          </Map>
-        </APIProvider>
+            {/* <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            /> */}
+            <Marker
+              position={garage.coords}
+              eventHandlers={{
+                add: (e) => {
+                  e.target.openPopup();
+                },
+              }}
+            >
+              <Popup>
+                <div className="text-center">
+                  <span className="block text-sm my-1">{garage.name} Parking</span>
+                  <span className="block text-slate-600">{garage.address.split(',')[0]}</span>
+                </div>
+              </Popup>
+            </Marker>
+          </MapContainer>
+        </div>
       </div>
 
       {(!isAndroid || (isAndroid && !isWebView)) && (
