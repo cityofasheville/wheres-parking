@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Tooltip, useMap } from 'react-leaflet';
 import PopupFocusHandler from './PopupFocusHandler';
+import bc_logo_brand from './bc_logo_brand.png';
+import city_logo_no_text from './city_logo_no_text.svg';
 import 'leaflet-gesture-handling';
 
 function GarageMap({ garages }) {
@@ -37,18 +39,40 @@ function GarageMap({ garages }) {
                 key={garage.slug}
                 position={{ lat: garage.coords[0], lng: garage.coords[1] }}
                 title={garage.name}
+                alt={garage.name}
               >
-                <Tooltip offset={[0, 0]} opacity={1} permanent style={{ borderRadius: '.5rem' }}>
-                  <span className="text-lg">{garage.available}</span>
+                <Tooltip
+                  className="flex flex-col items-center justify-center"
+                  offset={[0, 0]}
+                  opacity={1}
+                  permanent
+                  style={{ borderRadius: '.5rem' }}
+                >
+                  <span className="text-lg leading-none">{garage.available}</span>
+                  <span className="leading-normal">spaces</span>
                 </Tooltip>
                 <Popup>
                   <div className="max-w-xs mt-0 py-2">
-                    <div className="text-xl">{garage.name}</div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="min-w-6">
+                        <img
+                          src={garage.jurisdiction === 'city' ? city_logo_no_text : bc_logo_brand}
+                          alt=""
+                          className="w-6 h-6"
+                        />
+                        <span className="sr-only">
+                          {garage.jurisdiction === 'city'
+                            ? 'Managed by City of Asheville'
+                            : 'Managed by Buncombe County'}
+                        </span>
+                      </div>
+                      <div className="text-xl">{garage.name}</div>
+                    </div>
                     <address className="text-sm text-slate-600 not-italic mb-2">
                       {garage.address}
                     </address>
 
-                    <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-baseline justify-between gap-2">
                       <span className="text-lg font-medium text-green-700">
                         {garage.available} spots open
                       </span>

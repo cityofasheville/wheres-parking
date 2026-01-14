@@ -785,6 +785,10 @@ fieldset:focus-within {
   height: 32rem;
 }
 
+.h-6 {
+  height: 1.5rem;
+}
+
 .min-h-20 {
   min-height: 5rem;
 }
@@ -817,8 +821,16 @@ fieldset:focus-within {
   width: max-content;
 }
 
+.w-6 {
+  width: 1.5rem;
+}
+
 .min-w-8 {
   min-width: 2rem;
+}
+
+.min-w-6 {
+  min-width: 1.5rem;
 }
 
 .max-w-screen-sm {
@@ -1021,6 +1033,10 @@ fieldset:focus-within {
   vertical-align: baseline;
 }
 
+.align-middle {
+  vertical-align: middle;
+}
+
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -1068,6 +1084,14 @@ fieldset:focus-within {
 
 .not-italic {
   font-style: normal;
+}
+
+.leading-none {
+  line-height: 1;
+}
+
+.leading-normal {
+  line-height: 1.5;
 }
 
 .text-blue-600 {

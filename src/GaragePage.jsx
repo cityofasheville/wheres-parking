@@ -86,7 +86,7 @@ function GaragePage(params) {
   useEffect(() => {
     intervalRef.current = setInterval(() => {
       loadGarageData(true, 0);
-    }, 30000);
+    }, 15000);
 
     return () => {
       clearInterval(intervalRef.current);
@@ -145,10 +145,25 @@ function GaragePage(params) {
             onClick={() => {
               history.back();
             }}
-            className="font-medium text-wp-blue-dark hover:underline inline-block text-nowrap"
+            className="flex items-center justify-between gap-1 font-medium text-wp-blue-dark hover:underline text-nowrap"
           >
-            <i className="bi bi-arrow-left mr-1" aria-hidden="true"></i>
-            Back
+            <span className="inline-block" aria-hidden="true">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-arrow-left-circle"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"
+                />
+              </svg>
+            </span>
+            {/* <i className="bi bi-arrow-left mr-1" aria-hidden="true"></i> */}
+            <span className="inline-block">Back</span>
           </button>
         </div>
         <address className="text-slate-600 not-italic mb-2">
@@ -230,7 +245,19 @@ function GaragePage(params) {
             target="_blank"
             className="w-full bg-wp-blue-dark hover:bg-wp-blue-dark/80 focus:bg-wp-blue-dark/80 active:bg-wp-blue-dark/80 text-white font-semibold text-xl py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-blue-200 shadow-lg"
           >
-            <i className="bi bi-signpost-split" aria-hidden="true"></i>Open in Maps
+            <span aria-hidden="true">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-signpost-split"
+                viewBox="0 0 16 16"
+              >
+                <path d="M7 7V1.414a1 1 0 0 1 2 0V2h5a1 1 0 0 1 .8.4l.975 1.3a.5.5 0 0 1 0 .6L14.8 5.6a1 1 0 0 1-.8.4H9v10H7v-5H2a1 1 0 0 1-.8-.4L.225 9.3a.5.5 0 0 1 0-.6L1.2 7.4A1 1 0 0 1 2 7zm1 3V8H2l-.75 1L2 10zm0-5h6l.75-1L14 3H8z" />
+              </svg>
+            </span>
+            Open in Maps
           </a>
         </div>
       )}
