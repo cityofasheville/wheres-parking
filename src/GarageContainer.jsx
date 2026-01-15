@@ -1,11 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
+import { useSearchParams } from 'wouter';
 import GarageTable from './GarageTable';
 import GarageMap from './GarageMap';
-import { fetchAllGarageData, fetchConsolidatedGarageData } from './utilities';
+import Loading from './Loading';
+import { fetchConsolidatedGarageData } from './utilities';
 
 function GarageContainer() {
   const [allGarages, setAllGarages] = useState([]);
   const [viewMode, setViewMode] = useState('list');
+  const [searchParams, setSearchParams] = useSearchParams();
   const intervalRef = useRef(null);
 
   useEffect(() => {
@@ -20,14 +23,27 @@ function GarageContainer() {
     intervalRef.current = setInterval(async () => {
       const garageData = await fetchConsolidatedGarageData();
       setAllGarages(garageData);
-    }, 30000);
+    }, 15000);
     return () => {
       clearInterval(intervalRef.current);
     };
   }, []);
 
+  useEffect(() => {
+    const view = searchParams.get('view');
+    if (view === 'map' || view === 'list') {
+      setViewMode(view);
+    }
+  }, []);
+
+  useEffect(() => {
+    setSearchParams({
+      view: viewMode,
+    });
+  }, [viewMode, setSearchParams]);
+
   if (!allGarages || allGarages.length === 0) {
-    return <div>Loading garage data...</div>;
+    return <Loading>Loading garage data...</Loading>;
   }
 
   return (

@@ -19,22 +19,17 @@ function GarageCard(props) {
               <div className="min-w-8">
                 <img
                   src={props.jurisdiction === 'city' ? city_logo_no_text : bc_logo_brand}
-                  alt={
-                    props.jurisdiction === 'city'
-                      ? 'City of Asheville icon'
-                      : 'Buncombe County icon'
-                  }
+                  alt=""
                   className="w-8 h-8"
                 />
+                <span className="sr-only">
+                  {props.jurisdiction === 'city'
+                    ? 'Managed by City of Asheville'
+                    : 'Managed by Buncombe County'}
+                </span>
               </div>
               <span className="">
-                {props.name.includes('Center') || props.name.includes('Garage')
-                  ? props.name
-                      .replace(/Center/, '')
-                      .replace(/Garage$/, '')
-                      .replace(/\./g, '')
-                      .trim()
-                  : props.name}
+                {props.name}
                 <span className="hidden"> garage</span>
                 <br />
                 <address className="text-sm font-light text-slate-600 not-italic">

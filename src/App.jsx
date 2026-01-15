@@ -1,9 +1,19 @@
 import { Route, Switch } from 'wouter';
+import ReactGA from 'react-ga4';
 import Home from './Home';
 import Header from './Header';
 import Footer from './Footer';
 import GaragePage from './GaragePage';
 import './tw/tw-output.css';
+
+if (window.location.href.indexOf('wheresparking.ashevillenc.gov') > -1) {
+  ReactGA.initialize('G-E39GD4ZFLV');
+  ReactGA.send({
+    hitType: 'pageview',
+    page: window.location.pathname,
+    title: 'Wheres Parking',
+  });
+}
 
 function App() {
   return (

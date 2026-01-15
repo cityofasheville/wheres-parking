@@ -548,23 +548,20 @@ video {
 .text-link {
   --tw-text-opacity: 1;
   color: rgb(0 46 92 / var(--tw-text-opacity, 1));
-  -webkit-text-decoration-line: underline;
-          text-decoration-line: underline;
+  text-decoration-line: underline;
   text-underline-offset: 4px;
 }
 
 .text-link:hover {
   --tw-text-opacity: 1;
   color: rgb(15 23 42 / var(--tw-text-opacity, 1));
-  -webkit-text-decoration-line: none;
-          text-decoration-line: none;
+  text-decoration-line: none;
 }
 
 .text-link:focus {
   --tw-text-opacity: 1;
   color: rgb(15 23 42 / var(--tw-text-opacity, 1));
-  -webkit-text-decoration-line: none;
-          text-decoration-line: none;
+  text-decoration-line: none;
 }
 
 table {
@@ -699,6 +696,11 @@ fieldset:focus-within {
   margin-bottom: 0.5rem;
 }
 
+.my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -739,10 +741,6 @@ fieldset:focus-within {
   margin-top: 0px;
 }
 
-.mt-3 {
-  margin-top: 0.75rem;
-}
-
 .block {
   display: block;
 }
@@ -771,8 +769,24 @@ fieldset:focus-within {
   height: 2rem;
 }
 
+.h-80 {
+  height: 20rem;
+}
+
+.h-96 {
+  height: 24rem;
+}
+
 .h-full {
   height: 100%;
+}
+
+.h-128 {
+  height: 32rem;
+}
+
+.h-6 {
+  height: 1.5rem;
 }
 
 .min-h-20 {
@@ -804,12 +818,19 @@ fieldset:focus-within {
 }
 
 .w-max {
-  width: -webkit-max-content;
   width: max-content;
+}
+
+.w-6 {
+  width: 1.5rem;
 }
 
 .min-w-8 {
   min-width: 2rem;
+}
+
+.min-w-6 {
+  min-width: 1.5rem;
 }
 
 .max-w-screen-sm {
@@ -822,6 +843,16 @@ fieldset:focus-within {
 
 .flex-grow {
   flex-grow: 1;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
 }
 
 .cursor-pointer {
@@ -876,6 +907,10 @@ fieldset:focus-within {
   border-radius: 0.25rem;
 }
 
+.rounded-full {
+  border-radius: 9999px;
+}
+
 .rounded-md {
   border-radius: 0.375rem;
 }
@@ -892,6 +927,10 @@ fieldset:focus-within {
   border-width: 2px;
 }
 
+.border-\[3px\] {
+  border-width: 3px;
+}
+
 .border-b {
   border-bottom-width: 1px;
 }
@@ -904,12 +943,20 @@ fieldset:focus-within {
   border-top-width: 1px;
 }
 
+.border-current {
+  border-color: currentColor;
+}
+
 .border-transparent {
   border-color: transparent;
 }
 
 .border-wp-blue-dark\/20 {
   border-color: rgb(0 46 92 / 0.2);
+}
+
+.border-t-transparent {
+  border-top-color: transparent;
 }
 
 .bg-wp-blue-dark {
@@ -986,6 +1033,10 @@ fieldset:focus-within {
   vertical-align: baseline;
 }
 
+.align-middle {
+  vertical-align: middle;
+}
+
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -1011,15 +1062,6 @@ fieldset:focus-within {
   line-height: 1.75rem;
 }
 
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
-
-.font-bold {
-  font-weight: 700;
-}
-
 .font-light {
   font-weight: 300;
 }
@@ -1042,6 +1084,14 @@ fieldset:focus-within {
 
 .not-italic {
   font-style: normal;
+}
+
+.leading-none {
+  line-height: 1;
+}
+
+.leading-normal {
+  line-height: 1.5;
 }
 
 .text-blue-600 {
@@ -1089,6 +1139,10 @@ fieldset:focus-within {
   --tw-shadow: var(--tw-shadow-colored);
 }
 
+.outline {
+  outline-style: solid;
+}
+
 .transition-all {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -1115,18 +1169,13 @@ fieldset:focus-within {
   border-color: rgb(0 46 92 / var(--tw-border-opacity, 1));
 }
 
-.hover\:bg-wp-blue:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(52 152 219 / var(--tw-bg-opacity, 1));
+.hover\:bg-wp-blue-dark\/80:hover {
+  background-color: rgb(0 46 92 / 0.8);
 }
 
 .hover\:bg-wp-blue-light:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(246 252 255 / var(--tw-bg-opacity, 1));
-}
-
-.hover\:bg-wp-blue-dark\/80:hover {
-  background-color: rgb(0 46 92 / 0.8);
 }
 
 .hover\:font-semibold:hover {
@@ -1139,8 +1188,7 @@ fieldset:focus-within {
 }
 
 .hover\:underline:hover {
-  -webkit-text-decoration-line: underline;
-          text-decoration-line: underline;
+  text-decoration-line: underline;
 }
 
 .focus\:border-wp-blue-dark:focus {
@@ -1148,9 +1196,8 @@ fieldset:focus-within {
   border-color: rgb(0 46 92 / var(--tw-border-opacity, 1));
 }
 
-.focus\:bg-wp-blue:focus {
-  --tw-bg-opacity: 1;
-  background-color: rgb(52 152 219 / var(--tw-bg-opacity, 1));
+.focus\:bg-wp-blue-dark\/80:focus {
+  background-color: rgb(0 46 92 / 0.8);
 }
 
 .focus\:bg-wp-blue-light:focus {
@@ -1158,18 +1205,9 @@ fieldset:focus-within {
   background-color: rgb(246 252 255 / var(--tw-bg-opacity, 1));
 }
 
-.focus\:bg-wp-blue-dark\/80:focus {
-  background-color: rgb(0 46 92 / 0.8);
-}
-
 .focus\:text-slate-900:focus {
   --tw-text-opacity: 1;
   color: rgb(15 23 42 / var(--tw-text-opacity, 1));
-}
-
-.active\:bg-wp-blue:active {
-  --tw-bg-opacity: 1;
-  background-color: rgb(52 152 219 / var(--tw-bg-opacity, 1));
 }
 
 .active\:bg-wp-blue-dark\/80:active {
