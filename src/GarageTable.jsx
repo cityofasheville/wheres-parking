@@ -11,7 +11,7 @@ function GarageTable({ garages }) {
         <thead className="">
           <tr className="text-lg sm:text-xl bg-wp-blue-light text-wp-blue-dark">
             <th className="p-3 font-normal text-left">Garage name</th>
-            <th className="p-3 w-24 font-normal text-center">Open spaces</th>
+            <th className="p-3 w-24 font-normal text-center">Open spots</th>
           </tr>
         </thead>
         <tbody>

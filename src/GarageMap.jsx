@@ -49,7 +49,7 @@ function GarageMap({ garages }) {
                   style={{ borderRadius: '.5rem' }}
                 >
                   <span className="text-lg leading-none">{garage.available}</span>
-                  <span className="leading-normal">spaces</span>
+                  <span className="leading-normal">spots</span>
                 </Tooltip>
                 <Popup>
                   <div className="max-w-xs mt-0 py-2">

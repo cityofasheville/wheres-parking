@@ -139,6 +139,7 @@ function GaragePage(params) {
   return (
     <div className="max-w-screen-sm mx-auto px-3 mb-12">
       <header className="mb-6">
+        <title>{`Where's Parking - ${garage.name} Garage`}</title>
         <div className="w-full flex items-center justify-between gap-4 mb-2">
           <h2 className="text-3xl font-light">{!loading && garage && `${garage.name}`}</h2>
           <button
@@ -198,7 +199,7 @@ function GaragePage(params) {
 
         <div className="flex items-baseline gap-1 border border-wp-blue-dark/20 rounded bg-wp-blue-light px-4 py-2 w-max">
           <div className="text-3xl font-light">{garage.available}</div>
-          <div>available spaces</div>
+          <div>spots available</div>
         </div>
       </header>
 
