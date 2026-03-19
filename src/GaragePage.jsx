@@ -75,7 +75,7 @@ function GaragePage(params) {
         }
       }
     },
-    [garageSlug]
+    [garageSlug],
   );
 
   useEffect(() => {
@@ -121,7 +121,7 @@ function GaragePage(params) {
       },
       (err) => {
         console.log('Unable to copy address to cloipboard.', err);
-      }
+      },
     );
   }
 
@@ -173,6 +173,22 @@ function GaragePage(params) {
             className="text-wp-blue-dark hover:font-semibold inline-block"
             onClick={() => handleCopyAddress(garage.address)}
           >
+            <span className="inline-block" aria-hidden="true">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-copy"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"
+                />
+              </svg>
+            </span>
+
             <i className="bi bi-copy" aria-hidden="true" title="Copy address to clipboard"></i>
             <span className="sr-only">Copy address to clipboard</span>
           </button>
@@ -204,7 +220,7 @@ function GaragePage(params) {
       </header>
 
       <div className="mb-6">
-        <div className="w-full h-128">
+        <div className="w-full h-128 border border-slate-300">
           <MapContainer
             center={garage.coords}
             zoom={16}
@@ -212,14 +228,14 @@ function GaragePage(params) {
             style={{ height: '100%' }}
             gestureHandling={true}
           >
-            <TileLayer
+            {/* <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
               url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-            />
-            {/* <TileLayer
+            /> */}
+            <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            /> */}
+            />
             <Marker
               position={garage.coords}
               eventHandlers={{

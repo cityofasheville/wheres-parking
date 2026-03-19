@@ -13,7 +13,8 @@ function GarageMap({ garages }) {
         for additional information.
       </p>
       <figure className="">
-        <div className="w-full h-128">
+        <div className="w-full h-128 border border-slate-300">
+          <span className="hidden leaflet-control-attribution"></span>
           <MapContainer
             center={[35.59507694605827, -82.55298520128827]}
             zoom={16}
@@ -21,17 +22,17 @@ function GarageMap({ garages }) {
             style={{ height: '100%' }}
             gestureHandling={true}
           >
-            {/* <TileLayer
+            <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            /> */}
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-              url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
             />
             {/* <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles courtesy of <a href="http://www.openstreetmap.bzh/" target="_blank">Breton OpenStreetMap Team</a>'
-              url="https://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+              url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+            /> */}
+            {/* <TileLayer
+              attribution="Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012"
+              url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
             /> */}
             <PopupFocusHandler />
             {garages.map((garage) => (
@@ -39,7 +40,8 @@ function GarageMap({ garages }) {
                 key={garage.slug}
                 position={{ lat: garage.coords[0], lng: garage.coords[1] }}
                 title={garage.name}
-                alt={garage.name}
+                // aria-label={garage.name}
+                alt={`${garage.name} map pin`}
               >
                 <Tooltip
                   className="flex flex-col items-center justify-center"

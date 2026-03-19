@@ -55,9 +55,16 @@
     @apply bg-wp-blue-dark text-white;
   }
 
-
   fieldset:focus-within {
     @apply border-2 border-blue-500;
+  }
+
+  .leaflet-control-attribution {
+    background-color: white !important;
+  }
+
+  .leaflet-control-attribution a {
+    @apply font-medium text-slate-900;
   }
 
   /* label:has(input:focus) {

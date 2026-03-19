@@ -610,6 +610,16 @@ fieldset:focus-within {
   border-color: rgb(59 130 246 / var(--tw-border-opacity, 1));
 }
 
+.leaflet-control-attribution {
+  background-color: white !important;
+}
+
+.leaflet-control-attribution a {
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: rgb(15 23 42 / var(--tw-text-opacity, 1));
+}
+
 /* label:has(input:focus) {
     @apply outline-2 outline-offset-2 outline-blue-500;
   }
@@ -939,6 +949,11 @@ fieldset:focus-within {
   border-color: currentColor;
 }
 
+.border-slate-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(203 213 225 / var(--tw-border-opacity, 1));
+}
+
 .border-transparent {
   border-color: transparent;
 }
@@ -1007,11 +1022,6 @@ fieldset:focus-within {
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-}
-
-.px-12 {
-  padding-left: 3rem;
-  padding-right: 3rem;
 }
 
 .pb-4 {
