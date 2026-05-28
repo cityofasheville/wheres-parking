@@ -75,7 +75,7 @@ function GaragePage(params) {
         }
       }
     },
-    [garageSlug]
+    [garageSlug],
   );
 
   useEffect(() => {
@@ -121,7 +121,7 @@ function GaragePage(params) {
       },
       (err) => {
         console.log('Unable to copy address to cloipboard.', err);
-      }
+      },
     );
   }
 
@@ -139,6 +139,7 @@ function GaragePage(params) {
   return (
     <div className="max-w-screen-sm mx-auto px-3 mb-12">
       <header className="mb-6">
+        <title>{`Where's Parking - ${garage.name} Garage`}</title>
         <div className="w-full flex items-center justify-between gap-4 mb-2">
           <h2 className="text-3xl font-light">{!loading && garage && `${garage.name}`}</h2>
           <button
@@ -172,6 +173,22 @@ function GaragePage(params) {
             className="text-wp-blue-dark hover:font-semibold inline-block"
             onClick={() => handleCopyAddress(garage.address)}
           >
+            <span className="inline-block" aria-hidden="true">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-copy"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"
+                />
+              </svg>
+            </span>
+
             <i className="bi bi-copy" aria-hidden="true" title="Copy address to clipboard"></i>
             <span className="sr-only">Copy address to clipboard</span>
           </button>
@@ -198,12 +215,12 @@ function GaragePage(params) {
 
         <div className="flex items-baseline gap-1 border border-wp-blue-dark/20 rounded bg-wp-blue-light px-4 py-2 w-max">
           <div className="text-3xl font-light">{garage.available}</div>
-          <div>available spaces</div>
+          <div>spots available</div>
         </div>
       </header>
 
       <div className="mb-6">
-        <div className="w-full h-128">
+        <div className="w-full h-128 border border-slate-300">
           <MapContainer
             center={garage.coords}
             zoom={16}

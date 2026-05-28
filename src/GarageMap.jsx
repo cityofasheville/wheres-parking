@@ -13,7 +13,8 @@ function GarageMap({ garages }) {
         for additional information.
       </p>
       <figure className="">
-        <div className="w-full h-128">
+        <div className="w-full h-128 border border-slate-300">
+          <span className="hidden leaflet-control-attribution"></span>
           <MapContainer
             center={[35.59507694605827, -82.55298520128827]}
             zoom={16}
@@ -30,8 +31,8 @@ function GarageMap({ garages }) {
               url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
             />
             {/* <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles courtesy of <a href="http://www.openstreetmap.bzh/" target="_blank">Breton OpenStreetMap Team</a>'
-              url="https://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png"
+              attribution="Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012"
+              url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
             /> */}
             <PopupFocusHandler />
             {garages.map((garage) => (
@@ -39,7 +40,8 @@ function GarageMap({ garages }) {
                 key={garage.slug}
                 position={{ lat: garage.coords[0], lng: garage.coords[1] }}
                 title={garage.name}
-                alt={garage.name}
+                // aria-label={garage.name}
+                alt={`${garage.name} map pin`}
               >
                 <Tooltip
                   className="flex flex-col items-center justify-center"
@@ -49,7 +51,7 @@ function GarageMap({ garages }) {
                   style={{ borderRadius: '.5rem' }}
                 >
                   <span className="text-lg leading-none">{garage.available}</span>
-                  <span className="leading-normal">spaces</span>
+                  <span className="leading-normal">spots</span>
                 </Tooltip>
                 <Popup>
                   <div className="max-w-xs mt-0 py-2">
