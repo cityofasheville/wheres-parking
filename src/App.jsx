@@ -17,7 +17,7 @@ if (window.location.href.indexOf('wheresparking.ashevillenc.gov') > -1) {
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       <header className="relative w-full  bg-wp-blue-light border-b border-wp-blue-dark/20 mb-6">
         <Header />
       </header>
